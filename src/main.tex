@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{charter}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subfiles}
+\usepackage{ngerman}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{biblatex}
+\addbibresource{sources.bib}
+
+
+\setcounter{tocdepth}{4}
+\renewcommand{\baselinestretch}{1.5}\normalsize
+\titleformat{\chapter}{\normalfont\LARGE}{\thechapter.}{15pt}{\Large}\titlespacing*{\chapter}{0pt}{*0}{10pt}
+\newcommand{\bscite}[1]{\citeauthor{#1}: \citetitle{#1} (Stand: \citedate{#1}) \citeurl{#1}}
+
+\begin{document}
+    \title{Besondere Lernleistung}
+    \author{Ben Siebert \\ Im Mühlenwinkel 14 \\ 45525 Hattingen}
+    \date{
+        \begin{tabularx}{14cm}{XX}
+            \textbf{Titel}: & CodeUp - Einfacher Einstieg in die Programmierung \\
+            \textbf{Betreuer}: & Herr A. Werner \\
+            \textbf{Schule}: & Städtisches Gymnasium im Schulzentrum Holthausen \\
+            \textbf{Leichtfach}: & Informatik \\
+            \textbf{Abiturjahrgang}: & 2025 \\
+            \textbf{Version}: & \today \\
+        \end{tabularx}
+    }
+    \maketitle
+
+    \tableofcontents
+
+    \chapter{Einleitung}
+    \subfile{introduction.tex}
+    \chapter{Webseite}
+    \chapter{Spiel}
+    \chapter{Infrastruktur}
+    \chapter{Literaturverzeichnis}
+    \printbibliography[heading=none]
+    \chapter{Anhang}
+\end{document}
