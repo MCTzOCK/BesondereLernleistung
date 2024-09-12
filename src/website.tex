@@ -5,10 +5,29 @@
     \section{Technischer Hintergrund}
     Die Webseite von CodeUp und damit der Hauptteil des Projekts wurde mit modernen Web-Technologien entwickelt.
     Dabei verfügt sie sowohl über einen Frontend- als auch einen Backend-Teil, allerdings werden diese durch die Bibliothek \dq Next.js\dq \footnote{\bscite{nextjs}}\ miteinander vereint.
+    Um einen besseren Überblick über die gesamte Code-Basis zu erhalten, ist CodeUp in einer Monorepo-Struktur organisiert.
+    Das bedeutet, dass die Webseite in verschiedene Pakete, wie Komponenten für die Benutzeroberfläche, Backend-Logik und Interaktionslogik, unterteilt ist.
+    Für die Umsetzung der Monorepo-Struktur wurde das Werkzeug \dq Turborepo\dq \footnote{\bscite{turborepo}}\ verwendet.
     \subsection{Frontend}
 
     \subsection{Backend}
     Das Backend von CodeUp basiert auf dem Node.js-Framework und dem dazu gehörigen \dq http\dq-Modul, welches die Erstellung eines HTTP-Servers ermöglicht.
     Neben dem HTTP-Server wird auch ein WebSocket-Server verwendet, um eine bidirektionale Kommunikation zwischen Client und Server zu ermöglichen.
     Für die WebSocket-Kommunikation wird die Bibliothek \dq socket.io\dq \footnote{\bscite{socketio}}\ verwendet.
+    Die Datenspeicherung und spätere Verarbeitung erfolgt über eine MongoDB-Datenbank.
+    MongoDB wurde initial in Betracht gezogen, da es eine Nicht-Relationale Datenbank ist und somit eine hohe Flexibilität bietet, die für CodeUp zwingend erforderlich ist.
+    In dieser MongoDB-Datenbank werden sowohl die Benutzerdaten, als auch sämtliche andere Daten der Platform gespeichert.
+    Lediglich Dateien, die Benutzer hochladen oder durch das Anlegen von Projekte indirekt erstellen, werden separat im S3-kompatiblen Object-Storage MinIO gespeichert.
+    MinIO ist eine Open-Source-Alternative zu Amazon S3 und ermöglicht die effiziente Speicherung von Dateien.
+
+    \subsection{Kommunikation zwischen Frontend und Backend}
+    Die Kommunikation zwischen dem Frontend und dem Backend der Webseite erfolgt größtenteils über eine REST-API, also eine HTTP-Kommunikation zwischen dem Client und dem Server.
+    Damit diese REST-API möglichst einfach in den Frontend-Code integriert werden kann, wurde eine separate Bibliothek entwickelt, die die Kommunikation abstrahiert und vereinfacht.
+    Diese Bibliothek wird in allen Komponenten der Webseite verwendet und umfasst alle möglichen Funktionen und Endpunkte, die der Server bereitstellt.
+    Benutzer können die CodeUp-REST-API auch in eigenen Projekten verwenden, weshalb die Bibliothek auch als eigenständiges Paket veröffentlicht wurde.
+    Eine beispielhafte Nutzung der Bibliothek zur Authentifizierung eines Benutzers könnte wie folgt aussehen:
+    \begin{lstlisting}[language=javascript]
+        import { REST } from "@codeupspace/rest";
+        REST.Account.login();
+    \end{lstlisting}
 \end{document}
