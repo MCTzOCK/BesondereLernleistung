@@ -9,6 +9,13 @@
     Das bedeutet, dass die Webseite in verschiedene Pakete, wie Komponenten für die Benutzeroberfläche, Backend-Logik und Interaktionslogik, unterteilt ist.
     Für die Umsetzung der Monorepo-Struktur wurde das Werkzeug \dq Turborepo\dq \footnote{\bscite{turborepo}}\ verwendet.
     \subsection{Frontend}
+    Das Frontend von CodeUp ist mit Hilfe des React.js-Frameworks realisiert.
+    Dieses ermöglicht die einfache Entwicklung von interaktiven Benutzeroberflächen.
+    Beim Design der Oberfläche wurde besonderer Wert auf Funktionalität und Benutzerfreundlichkeit gelegt.
+    Ebenfalls sollte die Webseite für Menschen mit einer Sehschwäche oder anderen Einschränkungen zugänglich sein, weshalb die Webseite barrierefrei gestaltet wurde.
+    Um eine solche Barrierefreiheit zu gewährleisten, wurde die Benutzeroberflächen-Bibliothek \dq Chakra UI\dq \footnote{\bscite{chakraui}}\ verwendet.
+    Diese Bibliothek bietet eine Vielzahl an vorgefertigten Komponenten an, die sich einfach in eine React-Anwendung integrieren lassen.
+    Für Chakra-UI wurde allerdings ein eigenes Theme erstellt, um das Design an die Bedürfnisse von CodeUp anzupassen.
 
     \subsection{Backend}
     Das Backend von CodeUp basiert auf dem Node.js-Framework und dem dazu gehörigen \dq http\dq-Modul, welches die Erstellung eines HTTP-Servers ermöglicht.
@@ -27,7 +34,10 @@
     Benutzer können die CodeUp-REST-API auch in eigenen Projekten verwenden, weshalb die Bibliothek auch als eigenständiges Paket veröffentlicht wurde.
     Eine beispielhafte Nutzung der Bibliothek zur Authentifizierung eines Benutzers könnte wie folgt aussehen:
     \begin{lstlisting}[language=javascript]
-        import { REST } from "@codeupspace/rest";
-        REST.Account.login();
+import { REST } from "@codeupspace/rest";
+REST.Account.loginWithUsername({
+    username: "test",
+    password: "test"
+});
     \end{lstlisting}
 \end{document}
