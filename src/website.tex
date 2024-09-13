@@ -1,16 +1,28 @@
 \documentclass[main.tex]{subfiles}
 
 \begin{document}
+    \section{Konzept}
+    Die Webseite von CodeUp ist eine Plattform für Menschen, die sich für das Programmieren interessieren und ihre Fähigkeiten verbessern möchten.
+    Der Hauptfokus liegt hierbei auf der Entwicklung einer ganzheitlichen Lernumgebung, die über das reine Lernen von Programmiersprachen und Konzepten hinausgeht und alle wichtigen Aspekte der Software-Entiwcklung abdeckt.
+    Dazu gehören unter anderem die Planung und Umsetzung von Projekten, die Zusammenarbeit mit anderen Entwicklern und die Veröffentlichung von eigenen Projekten.
+    Da sich CodeUp vor allem an Schüler richtet, die noch keine oder nur wenig Erfahrung im Programmieren haben, wurden vor allem Unterrichtsrelevante Themen in den Vordergrund gestellt.
+    Ebenfalls gibt es Integrationsmöglichkeiten für die Verwendung in der Schule oder in anderen Bildungsinstitutionen.
 
-    \section{Technischer Hintergrund}
-    Die Webseite von CodeUp und damit der Hauptteil des Projekts wurde mit modernen Web-Technologien entwickelt.
-    Dabei verfügt sie sowohl über einen Frontend- als auch einen Backend-Teil, allerdings werden diese durch die Bibliothek \dq Next.js\dq \footnote{\bscite{nextjs}}\ miteinander vereint.
-    Um einen besseren Überblick über die gesamte Code-Basis zu erhalten, ist CodeUp in einer Monorepo-Struktur organisiert.
-    Das bedeutet, dass die Webseite in verschiedene Pakete, wie Komponenten für die Benutzeroberfläche, Backend-Logik und Interaktionslogik, unterteilt ist.
-    Für die Umsetzung der Monorepo-Struktur wurde das Werkzeug \dq Turborepo\dq \footnote{\bscite{turborepo}}\ verwendet.
-    Der CodeUp-Quellcode ist über ein Git-Repository organisiert, sodass Fehler durch Versionskontrolle vermieden werden können.
-    Bei der Entwicklung wurde das Super-Set der JavaScript-Sprache, TypeScript, verwendet, um die Code-Qualität zu erhöhen und Fehler frühzeitig zu erkennen.
-    TypeScript bietet die Möglichkeit, Typen für Variablen und Funktionen zu definieren und so eine statische Typisierung ermöglicht.
+    \section{Technologie-Stack}
+    CodeUp wurde mit modernen Web-Technologien entwickelt, um eine hohe Benutzerfreundlichkeit und Funktionalität zu gewährleisten.
+    Da die Webseite aus vielen verschiedenen Komponenten besteht, wurde sie in einer Monorepo-Struktur organisiert.
+    Für diese Monorepo-Struktur wurde das Werkzeug \dq Turborepo\dq\footnote{\bscite{turborepo}}\ verwendet, welches eine einfache Verwaltung von mehreren Paketen ermöglicht.
+    Die Wahl der Programmiersprache fiel auf TypeScript, da diese eine statische Typisierung ermöglicht und so die Code-Qualität erhöht und die Fehleranfälligkeit reduziert.
+    Im Kern besteht CodeUp aus einem Frontend- und einem Backend-Teil, die durch die Bibliothek \dq Next.js\dq\footnote{\bscite{nextjs}}\ miteinander verbunden sind.
+    Allerdings wird nicht der von Next.js bereitgestellte HTTP-Server verwendet, sondern ein eigener, der auf dem Node.js-Modul \dq http\dq\ basiert.
+    Für die Kommunikation zwischen Frontend und Backend wird eine REST-API verwendet, die über eine eigene Bibliothek abstrahiert wird (siehe~\ref{subsec:web_srv_communication}).
+    Die Daten werden in einer MongoDB-Datenbank gespeichert, während Dateien in einem S3-kompatiblen Object-Storage abgelegt werden.
+    Für die Benutzeroberfläche fiel die Wahl auf das Design-System \dq Chakra UI\dq\footnote{\bscite{chakraui}}, das eine Vielzahl an vorgefertigten Komponenten bietet und eine einfache Anpassung ermöglicht.
+    Chakra UI wurde für CodeUp angepasst und um ein eigenes Theme erweitert, welches Farben, Schriftarten und andere Design-Elemente enthält.
+    Die Webseite ist responsive gestaltet, sodass sie auf allen Geräten optimal dargestellt wird, was allerdings nicht in allen Bereichen (z.B.~Code-Editoren) technisch möglich ist.
+    Durch die Oranisation in einer Git-Repository wird die Versionskontrolle gewährleistet und Fehler können frühzeitig erkannt und behoben werden.
+    Notfalls kann auf ältere Versionen zurückgegriffen werden, um Fehler zu beheben.
+
     \subsection{Frontend}
     Das Frontend von CodeUp ist mit Hilfe des React.js-Frameworks realisiert.
     Dieses ermöglicht die einfache Entwicklung von interaktiven Benutzeroberflächen.
@@ -32,7 +44,7 @@
     Lediglich Dateien, die Benutzer hochladen oder durch das Anlegen von Projekte indirekt erstellen, werden separat im S3-kompatiblen Object-Storage MinIO gespeichert.
     MinIO ist eine Open-Source-Alternative zu Amazon S3 und ermöglicht die effiziente Speicherung von Dateien.
 
-    \subsection{Kommunikation zwischen Frontend und Backend}
+    \subsection{Kommunikation zwischen Frontend und Backend}\label{subsec:web_srv_communication}
     Die Kommunikation zwischen dem Frontend und dem Backend der Webseite erfolgt größtenteils über eine REST-API, also eine HTTP-Kommunikation zwischen dem Client und dem Server.
     Damit diese REST-API möglichst einfach in den Frontend-Code integriert werden kann, wurde eine separate Bibliothek entwickelt, die die Kommunikation abstrahiert und vereinfacht.
     Diese Bibliothek wird in allen Komponenten der Webseite verwendet und umfasst alle möglichen Funktionen und Endpunkte, die der Server bereitstellt.
