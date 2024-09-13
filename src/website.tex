@@ -22,17 +22,22 @@
     Die Webseite ist responsive gestaltet, sodass sie auf allen Geräten optimal dargestellt wird, was allerdings nicht in allen Bereichen (z.B.~Code-Editoren) technisch möglich ist.
     Durch die Oranisation in einer Git-Repository wird die Versionskontrolle gewährleistet und Fehler können frühzeitig erkannt und behoben werden.
     Notfalls kann auf ältere Versionen zurückgegriffen werden, um Fehler zu beheben.
+    Bei der tatsächlichen Entwicklung wird auf JetBrains WebStorm\footnote{\bscite{webstorm}} als IDE gesetzt, da diese eine Vielzahl an Funktionen bietet und so produktives Arbeiten ermöglicht.
+    
 
-    \subsection{Frontend}
-    Das Frontend von CodeUp ist mit Hilfe des React.js-Frameworks realisiert.
-    Dieses ermöglicht die einfache Entwicklung von interaktiven Benutzeroberflächen.
-    Beim Design der Oberfläche wurde besonderer Wert auf Funktionalität und Benutzerfreundlichkeit gelegt.
-    Ebenfalls sollte die Webseite für Menschen mit einer Sehschwäche oder anderen Einschränkungen zugänglich sein, weshalb die Webseite barrierefrei gestaltet wurde.
-    Um eine solche Barrierefreiheit zu gewährleisten, wurde die Benutzeroberflächen-Bibliothek \dq Chakra UI\dq \footnote{\bscite{chakraui}}\ verwendet.
-    Diese Bibliothek bietet eine Vielzahl an vorgefertigten Komponenten an, die sich einfach in eine React-Anwendung integrieren lassen.
-    Für Chakra-UI wurde allerdings ein eigenes Theme erstellt, um das Design an die Bedürfnisse von CodeUp anzupassen.
-    Ein weiterer wichtiger Aspekt ist die responsive Gestaltung der CodeUp-Webseite, sodass sie auf allen Geräten, wie Desktops, Tablets und Smartphones, optimal dargestellt wird.
-    Dies ist nicht an allen Punkten technisch möglich, da beispielsweise Code-Editoren auf kleinen Bildschirmen nur schwer zu bedienen sind.
+    \subsection{Sicherheit}
+    Für die sichere Speicherung und spätere Validierung von Anmeldedaten wird das Password-Hashing-Verfahren sha256 verwendet.
+    Dieses Verfahren bietet eine sogenannte Einwegverschlüsselung, sodass Klartext zwar in einen Hash umgewandelt werden kann, dieser aber nicht wieder in Klartext zurückverwandelt werden kann.
+    Dies ist besonders wichtig, da die Sicherheit der Benutzerdaten oberste Priorität hat.
+    Wenn ein Benutzer sich anmeldet, wird das eingegebene Passwort mit dem oben genannten Verfahren gehasht und mit dem in der Datenbank gespeicherten Hash verglichen.
+    Sollten die beiden Hashes übereinstimmen, wird der Benutzer authentifiziert und erhält einen JWT (JSON Web Token)\footnote{\bscite{jwt}}, der für die weitere Kommunikation mit dem Server verwendet wird.
+    Dieser JWT enthält Informationen über den Benutzer und wird bei jeder Anfrage an den Server mitgeschickt, um den Benutzer zu authentifizieren.
+    Generell wird sämtlicher Datenverkehr über eine gesicherte HTTPS-Verbindung abgewickelt, um die Kommunikation zwischen Client und Server zu verschlüsseln.
+
+    \subsection{Benutzeroberfläche und Design}
+    Die Benutzeroberfläche wurde mit dem React.js\footnote{\bscite{react}} Framework entwickelt und besteht aus einer Vielzahl von Komponenten, die in einer Komponenten-Bibliothek organisiert sind.
+    React ist eine Bibliothek, die es ermöglicht, Benutzeroberflächen aus wiederverwendbaren Komponenten zu erstellen und gleichzeitig eine interaktive Benutzererfahrung zu bieten.
+
 
     \subsection{Backend}
     Das Backend von CodeUp basiert auf dem Node.js-Framework und dem dazu gehörigen \dq http\dq-Modul, welches die Erstellung eines HTTP-Servers ermöglicht.
