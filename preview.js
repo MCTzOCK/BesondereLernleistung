@@ -29,7 +29,11 @@ runTex();
 runBiber();
 runTex();
 
+
+
+/*
 execSync("open -a Preview.app ../pdf/CodeUp.pdf", {
     cwd: path.join(__dirname, "src"),
     stdio: "inherit"
 })
+ */

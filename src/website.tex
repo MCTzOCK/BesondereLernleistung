@@ -8,6 +8,9 @@
     Um einen besseren Überblick über die gesamte Code-Basis zu erhalten, ist CodeUp in einer Monorepo-Struktur organisiert.
     Das bedeutet, dass die Webseite in verschiedene Pakete, wie Komponenten für die Benutzeroberfläche, Backend-Logik und Interaktionslogik, unterteilt ist.
     Für die Umsetzung der Monorepo-Struktur wurde das Werkzeug \dq Turborepo\dq \footnote{\bscite{turborepo}}\ verwendet.
+    Der CodeUp-Quellcode ist über ein Git-Repository organisiert, sodass Fehler durch Versionskontrolle vermieden werden können.
+    Bei der Entwicklung wurde das Super-Set der JavaScript-Sprache, TypeScript, verwendet, um die Code-Qualität zu erhöhen und Fehler frühzeitig zu erkennen.
+    TypeScript bietet die Möglichkeit, Typen für Variablen und Funktionen zu definieren und so eine statische Typisierung ermöglicht.
     \subsection{Frontend}
     Das Frontend von CodeUp ist mit Hilfe des React.js-Frameworks realisiert.
     Dieses ermöglicht die einfache Entwicklung von interaktiven Benutzeroberflächen.
@@ -16,6 +19,8 @@
     Um eine solche Barrierefreiheit zu gewährleisten, wurde die Benutzeroberflächen-Bibliothek \dq Chakra UI\dq \footnote{\bscite{chakraui}}\ verwendet.
     Diese Bibliothek bietet eine Vielzahl an vorgefertigten Komponenten an, die sich einfach in eine React-Anwendung integrieren lassen.
     Für Chakra-UI wurde allerdings ein eigenes Theme erstellt, um das Design an die Bedürfnisse von CodeUp anzupassen.
+    Ein weiterer wichtiger Aspekt ist die responsive Gestaltung der CodeUp-Webseite, sodass sie auf allen Geräten, wie Desktops, Tablets und Smartphones, optimal dargestellt wird.
+    Dies ist nicht an allen Punkten technisch möglich, da beispielsweise Code-Editoren auf kleinen Bildschirmen nur schwer zu bedienen sind.
 
     \subsection{Backend}
     Das Backend von CodeUp basiert auf dem Node.js-Framework und dem dazu gehörigen \dq http\dq-Modul, welches die Erstellung eines HTTP-Servers ermöglicht.
@@ -40,4 +45,15 @@ REST.Account.loginWithUsername({
     password: "test"
 });
     \end{lstlisting}
+    In diesem Beispiel wird ein Benutzer mit dem Benutzernamen \dq test\dq \ und dem Passwort \dq test\dq \ authentifiziert.
+    Die REST-API-Bibliothek kümmert sich um die korrekte Kommunikation mit dem Server und gibt als Ergebnis immer ein Promise-Objekt des Typs \dq IResponse\dq\ zurück.
+    Dies ist ein spezielles Interface, das aus einem Statuscode und einem Datenobjekt besteht:
+    \begin{lstlisting}[language=javascript]
+interface IResponse {
+    status: number;
+    payload: any;
+}
+    \end{lstlisting}
+    Das Datenobjekt enthält die Antwort des Servers, die je nach Anfrage unterschiedlich sein kann.
+    Der Statuscode gibt an, ob die Anfrage erfolgreich war oder nicht.
 \end{document}
