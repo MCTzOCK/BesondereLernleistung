@@ -102,6 +102,23 @@ interface IResponse {
     Das Dashboard ist so gestaltet, dass es auf allen Geräten optimal dargestellt wird und eine intuitive Bedienung ermöglicht.
     Des Weiteren gibt es auf dem Dashboard meist keine direkten Aktionen, sondern lediglich Links zu den entsprechenden Seiten, sodass der Benutzer nicht überfordert wird.
     \subsubsection{Einstellungen}
+    Die Einstellungen-Seite bietet dem Benutzer die Möglichkeit, seine persönlichen Daten zu ändern.
+    Dabei kann er seine E-Mail-Adresse, sein Passwort und seinen Vor- und Nachnamen verändern.
+    Eine Änderung des Benutzernamens ist nicht möglich, da dieser teilweise als eindeutiger Identifikator verwendet wird.
+    Neben den persönlichen Daten kann der Benutzer auch die Zwei-Faktor-Authentifizierung aktivieren, um sein Konto zusätzlich zu schützen.
+    Hierbei wird ein QR-Code angezeigt, den der Benutzer mit einer Authenticator-App scannen kann, um den Zwei-Faktor-Authentifizierungs-Code zu erhalten.
+    Sollte die Zwei-Faktor-Authentifizierung aktiviert sein, wird der Benutzer bei jedem Anmeldvorgang nach dem Code gefragt.
+    Zum Deaktivieren der Zwei-Faktor-Authentifizierung muss der Benutzer ebenfalls den Code aus seiner Authenticator-App eingeben.
+    Auch das Löschen des Kontos ist möglich, allerdings gibt es hier mehrere Kontrollmechanismen, um sicherzustellen, dass der Benutzer das Konto und alle damit verbundenen Daten wirklich löschen möchte.
+    \subsubsection{Spracheinstellungen}
+    Der Benutzer hat die Möglichkeit, die Sprache der Webseite zu ändern.
+    Dies funktioniert über die Schaltfläche im Fußzeilenbereich, die die aktuell ausgewählte Sprache in Form einer Flagge anzeigt.
+    Durch Klicken auf die Schaltfläche öffnet sich ein Dropdown-Menü, in dem der Benutzer die gewünschte Sprache auswählen kann.
+    Aktuell werden Deutsch und Englisch manuell übersetzt, wobei Deutsch als Standardsprache festgelegt ist.
+    Automatische Übersetzungen gibt es für Französisch, Spanisch, Italienisch, Niederländisch, Polnisch und Portugiesisch.
+    Diese Automatische Überstzungen basieren auf der LibreTranslate-API\footnote{\bscite{libretranslate}}, die eine einfache und zuverlässige Übersetzung ermöglicht.
+    Sprachen, die automatisch übersetzt werden, bieten keine perfekte Übersetzung, sind aber in den meisten Fällen verständlich und ermöglichen es dem Benutzer, die Webseite in seiner Muttersprache zu nutzen.
+    Aktuell ist es nicht möglich, Videos in einer anderen Sprache anzusehen, da die Übersetzung von Videos zu teuer und aufwendig ist.
     \subsubsection{Level-System}
     Das Level-System ist eine Art Belohnungssystem, das den Benutzer für seine Aktivitäten auf der Plattform belohnt.
     Viele Aktionen, wie das Erstellen von Projekten, das Abschließen von Zertifikaten oder das Lösen von Challenges, geben dem Benutzer Erfahrungspunkte, die ihn im Level aufsteigen lassen.
