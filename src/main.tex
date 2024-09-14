@@ -15,8 +15,12 @@
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{xcolor}
 \usepackage[backend=biber]{biblatex}
 \addbibresource{sources.bib}
+
+\definecolor{cyellow}{HTML}{F7DE1F}
+\definecolor{cred}{HTML}{E03131}
 
 \lstdefinelanguage{javascript}{
     keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
@@ -35,7 +39,8 @@
 
 
 
-\setcounter{tocdepth}{4}
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
 \renewcommand{\baselinestretch}{1.5}\normalsize
 \titleformat{\chapter}{\normalfont\LARGE}{\thechapter.}{15pt}{\Large}\titlespacing*{\chapter}{0pt}{*0}{10pt}
 \newcommand{\bscite}[1]{\citeauthor{#1}: \citetitle{#1} (Stand: \citedate{#1}) \citeurl{#1}}
