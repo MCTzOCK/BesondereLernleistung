@@ -89,6 +89,26 @@ interface IResponse {
 
     \section{Funktionsumfang}
     \subsection{Generelle und globale Funktionen}
+    \subsubsection{Anmelden}
+    Bei der initialen Registrierung auf CodeUp hat der Benutzer die Möglichkeit, sich mit seiner E-Mail-Adresse und einem Passwort zu registrieren.
+    Allerdings gibt es auch die Möglichkeit, sich mit GitHub, GitLab oder Discord anzumelden, sodass der Benutzer nicht extra ein Passwort erstellen muss.
+    Nach der Registrierung wird eine Bestätigungs E-Mail an die angegebene E-Mail-Adresse gesendet, um die Echtheit der Adresse zu überprüfen.
+    Erst nach der Bestätigung kann der Benutzer sich anmelden und die Plattform nutzen.
+    \subsubsection{Dashboard}
+    \subsubsection{Einstellungen}
+    \subsubsection{Level-System}
+    Das Level-System ist eine Art Belohnungssystem, das den Benutzer für seine Aktivitäten auf der Plattform belohnt.
+    Viele Aktionen, wie das Erstellen von Projekten, das Abschließen von Zertifikaten oder das Lösen von Challenges, geben dem Benutzer Erfahrungspunkte, die ihn im Level aufsteigen lassen.
+    Hierdurch wird der Benutzer dazu motiviert, sich aktiv auf der Plattform zu beteiligen und seine Fähigkeiten zu verbessern.
+    \subsubsection{Admin-Panel}
+    \subsubsection{Creator Studio}
+    \subsubsection{Organisationen}
+    \subsubsection{KI-Assistent}
+    Der KI-Assistent ist ein Feature, das dem Benutzer individuelle Hilfe und Unterstützung bietet.
+    Er kann Fragen beantworten, Tipps geben und den Benutzer bei der Lösung von Problemen unterstützen.
+    Der KI-Assistent ist in der Lage, den Code des Benutzers zu analysieren und ihm Vorschläge zu machen, wie er diesen verbessern kann.
+    Das ganze System basiert auf dem OpenAI-Modell GPT-4o-mini\footnote{\bscite{gpt4o-mini}}, das speziell für die Verwendung in Chatbots und anderen KI-Systemen entwickelt wurde.
+    Aufgebaut ist der KI-Assistent in einer Chat-Oberfläche, die es dem Benutzer ermöglicht, direkt mit ihm zu interagieren und auf ältere Konversationen zuzugreifen zu können.
     \subsection{Lernen}
     \subsubsection{Kurse}
     CodeUp bietet eine Vielzahl an Kursen an, von denen jeder einzelne ein spezifisches Thema, wie beispielsweise eine Programmiersprache oder ein Konzept, abdeckt.
@@ -98,12 +118,35 @@ interface IResponse {
         \item \textbf{Interaktive Kurse}: Diese Kurse sind Text-basiert und bieten interaktive Übungen an, die den Benutzer dazu auffordern, selber Code zu schreiben.
         Hierbei beginnt jede Lektion mit einem kurzen Text, der das Thema einführt, gefolgt von einer oder mehreren Übungen, die den Benutzer dazu auffordern, Code zu schreiben.
         Jede Übung ist von einem Beispiel begleitet, das dem Benutzer zeigt, wie die Lösung aussehen könnte.
-        \item \textbf{Video-Kurse}: Diese Kurse bestehen aus einer Reihe von Videos.
+        \item \textbf{Video Kurse}: Diese Kurse bestehen aus einer Reihe von Videos.
         Hierbei gibt es nach jedem Video ein Quiz, das den Benutzer dazu ermutigt, sein Wissen zu testen und ggf. die Lektion zu wiederholen.
     \end{itemize}
-    Um eine 
+    Die Video-Lektionen sind in der Regel kurze Videos (ca.~5-10 Minuten) und behandelt ein spezifisches Thema.
+    Interaktive Lektionen bestehen meist aus 5--10 Übungen und enthalten aktuell kein Quiz, da das Wissen durch das Schreiben von Code getestet wird.
+    Videos werden auf der Video-Plattform YouTube gehostet und in die Webseite eingebettet, während interaktive Kurse direkt auf der Webseite gehostet werden.
+    Durch die Auslagerung auf YouTube können die Kosten für die Infrastruktur reduziert werden, da YouTube die Videos kostenlos bereitstellt.
     \subsubsection{Challenges}
+    Challenges sind kleine Programmieraufgaben, die der Benutzer lösen muss.
+    Diese Aufgaben können in JavaScript, TypeScript, Python, Go und Java gelöst werden und decken verschiedene Schwierigkeitsgrade ab.
+    Jede Challenge besteht aus einer Beschreibung, die das Problem erklärt, und einem Code-Editor, in dem der Benutzer seine Lösung schreiben kann.
+    Nachdem der Benutzer seine Lösung eingereicht hat, wird diese automatisch getestet und das Ergebnis angezeigt.
+    Der Benutzer kann seine Lösung so oft ändern, wie er möchte, bis er mit dem Ergebnis zufrieden ist.
+    Auch das erneute Übermitteln der Lösung ist möglich, um das Ergebnis zu aktualisieren.
+    Technisch gesehen wird der eingegebene Code in einem isolierten Docker-Container ausgeführt, um die Sicherheit der Plattform zu gewährleisten.
+    In Zukunft ist geplant, Challenges auch in anderen Programmiersrpache anzubieten und die Ausfürhung des Codes auf eine externe Plattform auszulagern, um die Sicherheit weiter zu erhöhen.
     \subsubsection{Zertifikate}
+    Benutzer haben die Möglichkeit für absolvierte Kurse ein Zertifikat zu erlangen, um anderen ihre Fähigkeiten zu zeigen.
+    Diese Zertifikate werden nicht automatisch vergeben, sondern müssen durch einen Test erworben werden.
+    Diese Tests bestehen aus einer Reihe von Fragen, die das Wissen des Benutzers über das Thema des Kurses testen.
+    Es gibt vier verschiedene Arten von Fragen:
+    \begin{itemize}
+        \item \textbf{Multiple-Choice}: Der Benutzer muss eine von mehreren vorgegebenen Antworten auswählen.
+        \item \textbf{Code vervollständigen}: Der Benutzer muss fehlende Teile eines Code-Snippets ergänzen.
+        \item \textbf{Code Vergleich}: Der Benutzer bekommt eine Ausgabe und muss aus zwei Codes denjenigen auswählen, der diese Ausgabe erzeugt.
+        \item \textbf{Code Überprüfung}: Der Benutzer muss angeben, ob der Code Fehler enthält oder nicht.
+    \end{itemize}
+    Jedes Zertifikat hat einen individuellen Schwellenwert, der erreicht werden muss, um das Zertifikat zu erhalten.
+    Dieser liegt standardmäßig bei 75\%, kann aber von den Kurs-Erstellern individuell angepasst werden.
     \subsection{Austauschen}
     \subsubsection{Forum}
     \subsubsection{Discovery}

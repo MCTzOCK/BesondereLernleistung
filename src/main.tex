@@ -4,6 +4,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{charter}
 \usepackage{titlesec}
+\usepackage{needspace}
+\usepackage{etoolbox}
 \usepackage{listings}
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -44,6 +46,9 @@
 \renewcommand{\baselinestretch}{1.5}\normalsize
 \titleformat{\chapter}{\normalfont\LARGE}{\thechapter.}{15pt}{\Large}\titlespacing*{\chapter}{0pt}{*0}{10pt}
 \newcommand{\bscite}[1]{\citeauthor{#1}: \citetitle{#1} (Stand: \citedate{#1}) \citeurl{#1}}
+
+\preto{\subsubsection}{\Needspace{5\baselineskip}} % Adjust space if needed
+
 
 \begin{document}
     \title{Besondere Lernleistung}
