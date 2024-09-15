@@ -252,6 +252,20 @@ interface IResponse {
     Dieser liegt standardmäßig bei 75\%, kann aber von den Kurs-Erstellern individuell angepasst werden.
     \subsection{Austauschen}
     \subsubsection{Forum}
+    Durch das Forum können sich Benutzer untereinander austauschen und Fragen stellen.
+    Hierbei gibt es die Möglichkeit Text-Beiträge zu erstellen, die von anderen Benutzern kommentiert und mit einem Herz markiert werden können.
+    Allerdings ist es ebenfalls möglich, Beiträge zu erstellen, die Bilder oder andere Medien, wie Dateien enthalten.
+    Um dies zu ermöglichen, wird nach der Erstellung eines Beitrags im Hintergrund dieser analysiert und ggf. ein sogenanntes \dq Embed\dq\ erstellt.
+    Diese \dq Embeds\dq\ sind spezielle Anhänge an einen Beitrag, die von der Webseite erkannt und entsprechend dargestellt werden.
+    Datei-Uploads sind grundsätzlich erlaubt, allerdings gibt es eine maximale Dateigröße von 2MB, um die Serverlast zu reduzieren, da die Dateien direkt in der Infrastruktur von CodeUp gespeichert werden.
+    Neben den Beiträgen kann ein Benutzer auch ein eigenes Profil erstellen.
+    Auf diesem Profil kann er eine Webseite verlinken, dies könnte zum Beispiel ein Projekt sein, dass mit CodeUp veröffentlicht wurde.
+    Neben der Einbindung einer Webseite kann der Benutzer außerdem seinen Wohnort und seinen Geburtstag eintragen.
+    Diese Informationen sind allerdings, genauso wie eine Beschreibung, optional und müssen nicht ausgefüllt werden.
+    Damit andere Benutzer besser einschätzen können, wen sie um Hilfe bitten, gibt es die Möglichkeit, erworbene Zertifikate auf dem Profil anzuzeigen.
+    Auch hier hat der Profilbesitzer die freie Wahl, welche Zertifikate angezeigt werden und welche nicht.
+    Um eine direktere und private Kommunikation zu ermöglichen, gibt es eine Chat-Funktion, die mittels WebSockets in Echtzeit funktioniert.
+    Hierdurch können Benutzer sich gegenseitig bestmöglich unterstützen und Fragen können schneller beantwortet werden.
     \subsubsection{Discovery}
     Das Discovery-Feature ermöglicht es Benutzer, eigene Projekte zu veröffentlichen und anderen Benutzern zur Verfügung zu stellen.
     Auch das Suchen und Entdecken von Projekten anderer Benutzer ist möglich, um sich inspirieren zu lassen oder von anderen zu lernen.
@@ -270,10 +284,47 @@ interface IResponse {
     Um eine möglichst einfache und intuitive Bedienung zu gewährleisten, wurde auf komplexe Verzweigungen und Schleifen verzichtet.
     Damit der Benutzer sein Flussdiagramm personalisieren kann, gibt es die Möglichkeit, Knoten zu färben und Kanten zu animieren oder mit einem Text zu versehen.
     \subsection{Entwickeln}
+    Der Entwicklungsbereich von CodeUp ist der Bereich, der die meisten Änderungen und Erweiterungen erfahren hat.
+    Es gibt mehrere verschiedene Editoren, die im Laufe der Zeit entwickelt wurden und jeweils unterschiedliche Funktionen bietet.
+    Dabei ist die Dev-Suite der neuste Editor und bietet die meisten Funktionen, während der Editor (v2) und der IDE (v1) eher für spezielle Anwendungsfälle gedacht sind.
     \subsubsection{IDE (v1)}
+    Die IDE (v1) ist ein einfacher Code-Editor, der es dem Benutzer ermöglicht, Code zu schreiben und auszuführen.
+    Hierbei ist ausschließlich Frontend-Webentwicklung möglich, da der Code direkt im Browser des Benutzers ausgeführt wird.
+    Der Editor bietet Syntax-Hervorhebung, Autovervollständigung und eine Vorschau-Funktion, um dem Benutzer ein möglichst angenehmes Arbeiten zu ermöglichen.
+    Ebenfalls gibt es die Möglichkeit, Dateien zu speichern und zu laden, um den Code auch später noch bearbeiten zu können.
+    Aufgebaut ist der Editor in Projekten, die aus mehreren Dateien bestehen können.
+    Der Benutzer ist selbst für die Organisation der Dateien verantwortlich, da der Editor keine spezielle Struktur vorgibt.
+    Dies beinhaltet auch das Verbinden von Dateien, um beispielsweise eine CSS-Datei in eine HTML-Datei einzubinden.
     \subsubsection{Editor (v2)}
+    Der Editor (v2) ist ein fortgeschrittener Code-Editor, der es dem Benutzer ermöglicht Back- und Frontend-Webentwicklung zu betreiben.
+    Hierbei ist der Editor ebenfalls in Projekte organisiert, die allerdings nicht im klassischen Sinne aus mehreren Dateien bestehen.
+    Viel mehr besteht ein Projekt aus mehreren Seiten, die jeweils HTML oder InCode als Grundgerüst haben und optional durch Resourcen, wie CSS- oder JavaScript-Dateien, erweitert werden können.
+    Des Weiteren gibt es neben den Seiten auch sogenannte Serverless-Funktionen, die es dem Benutzer ermöglichen, einfache Server-Logik zu schreiben.
+    Diese Funktionen werden auf einem Server als isolierte Docker-Container ausgeführt und können von den Seiten aufgerufen werden.
+    Durch die isoliering in einem Docker-Container kann es zu größeren Wartezeiten kommen, da der Container erst gestartet werden muss.
+    Jede Funktion hat eine maximale Laufzeit von 10 Sekunden, um die Serverlast zu reduzieren und Funktionen vorzubeugen, die beispielweise als Cryptominer missbraucht werden könnten.
+    Der Editor (v2) bietet ebenfalls Syntax-Hervorhebung, Autovervollständigung und eine Vorschau-Funktion, um dem Benutzer ein möglichst angenehmes Arbeiten zu ermöglichen.
+    Um eine schnellere Entwicklung zu ermöglich ist der Editor komplett auf WebSockets aufgebaut, sodass der Benutzer Änderungen in Echtzeit sehen kann.
+    Durch die Verwendung von WebSockets wird eine kolaborative Entwicklung ermöglicht, da mehrere Benutzer gleichzeitig an einem Projekt arbeiten können und die Änderungen andere direkt sehen können.
+    Dabei können maximal 10 Benutzer gleichzeitig an einem Projekt arbeiten, da es ansonsten zu Performance-Problemen kommen könnte.
+    Der Ersteller des Projektes kann über den Mitwirkenden-Dialog Benutzer hinzufügen oder entfernen und deren Rechte festlegen.
+    Auch ein Export des Projektes ist möglich, um es lokal zu speichern.
+    Für das Hosting auf einem anderen Server außerhalb der CodeUp Umgebung ist ein Export zwar möglich, erfordert aber eine Anpassung des Codes, da das Format der Dateien speziell auf CodeUp zugeschnitten ist und keine allgemein gültige Struktur bietet.
+    Durch die Integration der statischen Dateien können Bentuzer beliebige Dateien, wie Bilder oder Videos, hochladen und in ihr Projekt einbinden.
+    Diese Dateien können über eine URL aufgerufen werden, die auf den CodeUp-Server verweist.
+    Durch die abstraktion der Dateien bietet sich dieser Editor besonders für Anfänger an, die schnell und einfach Webseiten erstellen möchten.
+    Anfänger können sich so nämlich auf die eigentliche Programmierung konzentrieren und müssen sich nicht um die Verlinkung oder Organisation der Dateien kümmern.
     \subsubsection{Dev-Suite (v3)}
     \subsubsection{CodeUp-Kids}
+    Der CodeUp-Kids-Bereich ist speziell für jüngere Benutzer gedacht, die noch keine oder nur wenig Erfahrung im Programmieren haben.
+    Hier gibt es eine einfache Programmierumgebung, die es dem Benutzer ermöglicht mit visuellen Blöcken zu programmieren.
+    Diese Blöcke können miteinander verbunden werden, um einfache Webseiten zu erstellen.
+    Das Block-System basiert auf der Blockly-Bibliothek\footnote{\bscite{blockly}}, die eine einfache und intuitive Programmierung ermöglicht.
+    Blockly selbst ist aber nur für die grafische Darstellung zuständig, die dahinterliegende Programmiersprache ist InCode, eine eigens entwickelte Sprache, die für CodeUp angepasst wurde.
+    InCode ist eine einfache Programmiersprache, die auf JavaScript basiert und es dem Benutzer ermöglicht, einfache Programme zu erstellen.
+    Hierbei schreibt der Benutzer möglichst grammatikalisch korrekte Sätze, die dann in JavaScript-Code umgewandelt werden.
+    So soll der Benutzer spielerisch an das Programmieren herangeführt werden und erste Erfahrungen sammeln.
+    Weitere Informationen zu InCode sind im Anhang~\ref{sec:incodedoc} zu finden.
     \subsubsection{Code-Snippets}
     Code-Snippets (auch Code-Schnipsel genannt) kann der Benutzer selbst erstellen und verwalten.
     Diese Snippets können Code-Blöcke, Funktionen oder ganze Programme sein, die der Benutzer immer wieder verwenden möchte.
