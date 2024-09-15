@@ -130,6 +130,50 @@ interface IResponse {
         \text{Level} = \text{Erfahrungspunkte}^{\frac{1}{3}}
     \end{equation}
     \subsubsection{Admin-Panel}
+    Das Admin-Panel ist eine spezielle Seite, die nur für Administratoren zugänglich ist und es ihnen ermöglicht, die Plattform zu verwalten.
+    Hier können Administratoren Benutzer sperren, Projekte löschen, Kurse überprüfen und andere administrative Aufgaben erledigen.
+    Das Admin-Panel ist so gestaltet, dass es einfach zu bedienen ist und alle wichtigen Funktionen auf einen Blick bietet.
+    Des Weiteren bietet das Admin-Panel eine Übersicht über Statistiken, wie die Anzahl der Benutzer, die Anzahl der Kurse und die Anzahl der Projekte.
+    Neben den globalen Analysen gibt es auch die Möglichkeit detaillierte Analysen für einzelne Benutzer durchzuführen.
+    Diese Analyse beinhaltet Informationen über die Aktivitäten des Benutzers, wie die Anzahl der Aufrufe und welche Seiten aufgerufen wurden.
+    Zu Verbesserungszwecken und um Fehler schneller zu identifizieren, wurde ein Session-Recording-Werkzeug namens rrweb\footnote{\bscite{rrweb}} integriert.
+    Hierdurch können Administratoren die Aktionen jedes einzelnen Aufrufs nachvollziehen und so Fehler schneller identifizieren.
+    rrweb ist so gestaltet, dass keine sensiblen Daten aufgezeichnet werden und die Privatsphäre der Benutzer gewahrt bleibt.
+    Durch das Admin-Panel können viele verschiedene Facetten der Plattform verwaltet werden, hierzu zählen:
+    \begin{itemize}
+        \item Benutzer: Hier können Benutzer gesperrt, gelöscht oder bearbeitet werden.
+        Im Notfall kann sich ein Administrator auch als Benutzer einloggen, um Probleme zu lösen.
+        \item Blog: Administratoren können Blog-Beiträge erstellen, bearbeiten und löschen.
+        \item CDN: Das Content-Delivery-Network kann über das Admin-Panel konfiguriert und verwaltet werden.
+        Hier können global verfügbare Dateien, wie Bilder und Videos, hochgeladen und verwaltet werden.
+        \item Challenges: Administratoren können Challenges erstellen, bearbeiten und löschen.
+        \item Code-Snippets: Code-Snippets von Benutzern können in dieser Ansicht verwaltet werden.
+        \item Discovery: Hier können Discovery-Einträge notfalls manuell gelöscht werden, falls sie gegen die Richtlinien verstoßen.
+        \item Editor: Verwaltung der Projekte, die mit dem Editor (v2) erstellt wurden.
+        \item Fehler: Hier werden alle Fehler und Warnungen aufgelistet, die auf der Plattform aufgetreten sind.
+        \item Flows: Administratoren können Flussdiagramme von Benutzern einsehen, bearbeiten und löschen.
+        \item IDE: Verwaltung der Projekte, die mit dem IDE (v1) erstellt wurden.
+        \item Kids: Verwaltung der CodeUp-Kids-Projekte.
+        \item Meinungen: Berechtigte Benutzer können in dieser Ansicht Meinungen über die Plattform verwalten, die auf der Homepage angezeigt werden.
+        \item Organisationen: Hier können Organisationen erstellt, bearbeitet und gelöscht werden.
+        \item Profile: Verwaltung der Benutzerprofile, inklusive der Möglichkeit, Benutzer zu sperren oder zu löschen.
+        Mit Profilen sind hier Profile aus dem Forum gemeint, nicht die tatsächlichen Benutzerkonten.
+        \item Projektideen: Administratoren können Projektideen erstellen, bearbeiten und löschen.
+        \item Replay: Zentrale Anlaufstelle für das Session-Recording-Tool rrweb.
+        \item Shorts: Verwaltung von gekürzten URLs, die auf andere Webseiten verweisen.
+        Diese sind nur für Administratoren sichtbar und können nicht von Benutzern erstellt werden.
+        \item ToDo: Hier können Administratoren ToDo-Listen von Benutzern verwalten.
+        \item Zertifikate: Verwaltung der Zertifikate, die Benutzer erhalten, wenn sie einen Kurs erfolgreich abgeschlossen haben.
+    \end{itemize}
+    Das Admin-Panel ist nicht zu jeder Zeit auf den Funktionsumfang der Plattform angepasst, sondern wird regelmäßig aktualisiert und erweitert.
+    Dies hat zur Folge, dass teilweise manuelle Eingriffe in die Datenbank notwendig sind, um bestimmte Funktionen zu ermöglichen.
+    In der Abbildung~\ref{fig:admin-panel} sind die Hauptfunktionen des Admin-Panels dargestellt.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{assets/admin-panel}
+        \caption{Admin-Panel}
+        \label{fig:admin-panel}
+    \end{figure}
     \subsubsection{Organisationen}
     \subsubsection{Creator Studio}
     Das Creator Studio ist der zentrale Anlaufpunkt für alle Benutzer, die eigene Kurse erstellen möchten.
@@ -155,10 +199,10 @@ interface IResponse {
     Wenn eine Video-Lektion eingefügt wird, muss ein Quiz hinzugefügt werden, das aus mindestens einer Frage besteht.
     Es ist ebenfalls möglich die Lektionstypen zu mischen, sodass ein Kurs sowohl aus Video- als auch aus interaktiven Lektionen bestehen kann.
     Allerdings muss der Kurs eine bevorzugte Art haben, die bei der Erstellung festgelegt wird und nicht mehr geändert werden kann.
-    In Abbildung \ref{fig:creator-studio} sind die Hauptfunktionen des Creator Studios dargestellt.
-    \begin{figure}[h]
+    In Abbildung~\ref{fig:creator-studio} sind die Hauptfunktionen des Creator Studios dargestellt.
+    \begin{figure}[h] % options: h, t, b, p
         \centering
-        \includegraphics[width=0.75\textwidth]{assets/creator-studio}
+        \includegraphics[width=0.6\textwidth]{assets/creator-studio}
         \caption{Creator Studio}
         \label{fig:creator-studio}
     \end{figure}
@@ -215,7 +259,16 @@ interface IResponse {
     Ebenfalls gibt es die Möglichkeit, Projekte zu kommentieren und Fragen zu stellen, um mehr über das Projekt zu erfahren.
     \subsection{Planen}
     \subsubsection{Aufgaben-Planung}
+    Die Aufgaben-Planung soll Benutzern die möglichkeit geben, ihre Projekte zu planen und zu strukturieren.
+    Hierbei wird auf eine einfache ToDo-Liste gesetzt, die es dem Benutzer ermöglicht, Aufgaben zu erstellen und zu verwalten.
+    Jede Aufgabe besteht aus einem Titel, einer Beschreibung und einem Status, der angibt, ob die Aufgabe abgeschlossen ist oder nicht.
+    Der Benutzer kann Aufgaben erstellen, bearbeiten und löschen, um seinen Arbeitsablauf zu organisieren.
+    Diese ToDo-Listen sollen dem Benutzer helfen, den Überblick über seine Projekte zu behalten, indem er große Aufgaben in kleinere Teilaufgaben unterteilt.
     \subsubsection{Flußdiagramme}
+    Flussdiagramme sind ein wichtiges Werkzeug, um den Ablauf von Programmen zu visualisieren und zu planen.
+    In CodeUp können sie dazu genutzt werden den Ablauf von konkreten Funktionen, wie einer Schaltfläche oder einer Animation, zu planen.
+    Um eine möglichst einfache und intuitive Bedienung zu gewährleisten, wurde auf komplexe Verzweigungen und Schleifen verzichtet.
+    Damit der Benutzer sein Flussdiagramm personalisieren kann, gibt es die Möglichkeit, Knoten zu färben und Kanten zu animieren oder mit einem Text zu versehen.
     \subsection{Entwickeln}
     \subsubsection{IDE (v1)}
     \subsubsection{Editor (v2)}
