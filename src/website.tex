@@ -175,6 +175,10 @@ interface IResponse {
         \label{fig:admin-panel}
     \end{figure}
     \subsubsection{Organisationen}
+    Organisationen sind eine Möglichkeit für Bildungseinrichtungen, Unternehmen oder andere Gruppen, ihre Mitglieder zu organisieren und ihnen spezielle Funktionen zur Verfügung zu stellen.
+    Jede Organisation hat einen Gründer der automatisch Administrator ist und weitere Mitglieder hinzufügen kann.
+    Organisationen haben die Möglichkeit, eigene Kurse zu erstellen und diese allen Mitgliedern zur Verfügung zu stellen.
+    Ebenfalls können Mitteilungen an alle Mitglieder verschickt werden, um wichtige Informationen zu verbreiten.
     \subsubsection{Creator Studio}
     Das Creator Studio ist der zentrale Anlaufpunkt für alle Benutzer, die eigene Kurse erstellen möchten.
     Hier können Benutzer neue Kurse erstellen und bestehende Kurse bearbeiten.
@@ -320,7 +324,46 @@ interface IResponse {
     Wie die anderen Editoren, ist auch die Dev-Suite in Projekte organisiert.
     Diese bestehen aber, wie bei der IDE (v1), aus mehreren Dateien, die der Benutzer selbst organisieren muss.
     Die Besonderheit, ist dass die Dev-Suite alle Aspekte der Entwicklung abdeckt, von der Planung über die Dokumentation, bis hin zur Entwicklung und der schlussendlichen Veröffentlichung.
+    Es werden viele verschiedene Aspekte der CodeUp Webseite in der Dev-Suite abgedeckt, wie beispielsweise Projekteigene Flussdiagramme oder ToDo-Listen (die in diesem Fall als \dq Probleme\dq\ bezeichnet werden und neben einer Beschreibung zusätzlich eine Priorität haben können).
+    Die Planungsübersicht eines Projektes gibt einen Überblick über alle Flussdiagramme und Probleme, die im Projekt enthalten sind.
+    Das Wiki dient der Dokumentation des Projektes und bietet die Möglichkeit mit Markdown zu arbeiten.
+    Dabei sollte das Wiki in mehrere Seiten eingeteilt werden.
+    Das Versionskontrollen-Fenster ermöglicht eine einfache Verwaltung der verschiedenen Versionen und eine mögliche Rückkehr zu einer älteren Version.
+    Jedes Projekt erhält bei Erstellung einen eigenen Objekt-Speicher, in dem alle hochgeladenen Dateien gespeichert werden können.
+    Dies ist im Vergleich zu den beiden älteren Editoren ein großer Vorteil, da Dateien so deutlich schneller geladen werden können, da sie effizienter abgerufen werden können.
+    In einem Projekt hat man außerdem die Möglichkeit UML-Diagramme zu erstellen, die die Struktur des Projektes visualisieren.
+    Diese Diagramme können in verschiedenen Formen erstellt werden, wie beispielsweise Klassendiagramme, Sequenzdiagramme und ER-Diagramme.
+    Des Weiteren kann der Benutzer neben den vorgefertigten Diagrammen auch eigene Diagramm-Typen mit der Hilfe von PlantUML\footnote{\bscite{plantuml}} erstellen.
+    Neben diesen Funktionen bietet die Dev-Suite auch die Möglichkeit, das Projekt einfach in verschiedene Sprachen zu übersetzen.
+    Hierfür wird eine übersichtliche Oberfläche mit optionalen automatischen Übersetzungen angeboten.
+    Jedes Projekt bekommt außerdem bei der Erstellung eine eigene MySQL-Datenbank für die Speicherung von Daten.
+    Diese Datenbank kann über die intuitive Oberfläche verwaltet werden und bietet die Möglichkeit, eigene SQL Abfragen zu erstellen.
+    Die Veröffentlichung des Projektes basiert ebenfalls auf Docker-Containern, die auf dem app0 Server von CodeUp ausgeführt werden.
+    Wenn der Benutzer eine neue Version veröffentlichen möchte, wird im Hintergrund ein Container-Image erstellt und ein neuer Container gestartet.
+    Anschließend wird dem Container eine Subdomain zugewiesen, unter der das Projekt erreichbar ist.
+    Nach der Veröffentlichung bleibt das Projekt online, bis es manuell vom Benutzer gelöscht wird.
+    Dieser hat, während das Projekt online, ist die Möglichkeit, Server-Logs einzusehen, um so Fehler identifizieren und beheben zu können.
+    Die eigentliche Entwicklungsumgebung basiert auf der WebContainer-API von StackBlitz\footnote{\bscite{webcontainer}}, die eine Client-seitige Entwicklungsumgebung von Full-Stack-Anwendungen ermöglicht.
+    Konkret heißt das, dass der Benutzer tatsächliche Server-Anwendungen entwickeln kann, die zur Entwicklungszeit im Browser des Benutzers ausgeführt werden.
+    Hierdurch wird eine schnelle Entwicklung ermöglicht, da der Benutzer nicht auf die Bereitstellung eines Servers warten muss.
+    Die eigentliche Programmieroberfläche basiert, wie alle Editoren von CodeUp auf dem Monaco-Editor\footnote{\bscite{monaco}}, der eine einfache und intuitive Programmierung ermöglicht.
+    Aufgeteilt ist die Oberfläche in zwei Bereiche, die vertikal geteilt sind und in der Größe verändert werden können.
+    Der rechte Bereich zeigt den eigentlichen Code-Editor, während der linke Bereich vier Funktionen bietet: Datei-Explorer, Terminal, Code-Snippets und Vorschau.
+    Der Datei-Explorer zeigt alle Dateien im Projekt an und bietet die Möglichkeit, Dateien zu erstellen, zu bearbeiten und zu löschen.
+    Der Terminal ermöglicht es dem Benutzer, Befehle auszuführen und die Ausgabe zu sehen.
+    Im Terminal kann der Benutzer sein Projekt starten und stoppen.
+    Intern werden alle Eingaben in das Terminal an den WebContainer weitergeleitet, der die Befehle ausführt und die Ausgabe zurückgibt.
+    Das Code-Snippets-Fenster bietet direkten Zugriff auf alle Code-Snippets, die der Benutzer erstellt hat und das Vorschau-Fenster zeigt eine Vorschau des Projektes an.
+    Mit der Dev-Suite ist es möglich reine Frontend-Projekte, reine Backend-Projekte und Full-Stack-Projekte zu entwickeln.
+    Es gibt verschiedene Vorlagen, die dem Benutzer den Einstieg erleichtern und ihn bei der Entwicklung unterstützen.
+    In Abbildung~\ref{fig:dev-suite} sieht man den Editor-Bereich der Dev-Suite in welchem der Benutzer Code schreiben kann.
 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{assets/dev-suite}
+        \caption{Dev-Suite}
+        \label{fig:dev-suite}
+    \end{figure}
     \subsubsection{CodeUp-Kids}
     Der CodeUp-Kids-Bereich ist speziell für jüngere Benutzer gedacht, die noch keine oder nur wenig Erfahrung im Programmieren haben.
     Hier gibt es eine einfache Programmierumgebung, die es dem Benutzer ermöglicht mit visuellen Blöcken zu programmieren.
