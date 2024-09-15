@@ -3,13 +3,13 @@
 \begin{document}
     \section{Konzept}
     Die Webseite von CodeUp ist eine Plattform für Menschen, die sich für das Programmieren interessieren und ihre Fähigkeiten verbessern möchten.
-    Der Hauptfokus liegt hierbei auf der Entwicklung einer ganzheitlichen Lernumgebung, die über das reine Lernen von Programmiersprachen und Konzepten hinausgeht und alle wichtigen Aspekte der Software-Entiwcklung abdeckt.
+    Der Hauptfokus liegt hierbei auf der Entwicklung einer ganzheitlichen Lernumgebung, die über das reine Lernen von Programmiersprachen und Konzepten hinausgeht und alle wichtigen Aspekte der Software-Entwicklung abdeckt.
     Dazu gehören unter anderem die Planung und Umsetzung von Projekten, die Zusammenarbeit mit anderen Entwicklern und die Veröffentlichung von eigenen Projekten.
     Da sich CodeUp vor allem an Schüler richtet, die noch keine oder nur wenig Erfahrung im Programmieren haben, wurden vor allem Unterrichtsrelevante Themen in den Vordergrund gestellt.
     Ebenfalls gibt es Integrationsmöglichkeiten für die Verwendung in der Schule oder in anderen Bildungsinstitutionen.
     Die Webseite ist so aufgebaut, dass sie sowohl für Anfänger als auch für Fortgeschrittene geeignet ist und eine Vielzahl von Funktionen bietet, die für beide Zielgruppen relevant sind.
     Auch die Wahl des Lernmediums ist wichtig, weshalb nach intensiver Recherche entschieden wurde, dass das Lernen über interaktive (Video-)Kurse am effektivsten ist.
-    Diese interaktiven Kurse sind in verschiedene Lektion unterteilt, die jeweils exakt einen Themenaspekt abdecken.
+    Diese interaktiven Kurse sind in verschiedene Lektionen unterteilt, die jeweils exakt einen Themenaspekt abdecken.
 
 
     \section{Technologie-Stack}
@@ -23,8 +23,8 @@
     Die Daten werden in einer MongoDB-Datenbank gespeichert, während Dateien in einem S3-kompatiblen Object-Storage abgelegt werden.
     Für die Benutzeroberfläche fiel die Wahl auf das Design-System \dq Chakra UI\dq\footnote{\bscite{chakraui}}, das eine Vielzahl an vorgefertigten Komponenten bietet und eine einfache Anpassung ermöglicht.
     Chakra UI wurde für CodeUp angepasst und um ein eigenes Theme erweitert, welches Farben, Schriftarten und andere Design-Elemente enthält.
-    Die Webseite ist responsive gestaltet, sodass sie auf allen Geräten optimal dargestellt wird, was allerdings nicht in allen Bereichen (z.B.~Code-Editoren) technisch möglich ist.
-    Durch die Oranisation in einer Git-Repository wird die Versionskontrolle gewährleistet und Fehler können frühzeitig erkannt und behoben werden.
+    Die Webseite ist responsive gestaltet, sodass sie auf allen Geräten optimal dargestellt wird, was allerdings nicht in allen Bereichen (z.~B.~Code-Editoren) technisch möglich ist.
+    Durch die Organisation in einer Git-Repository wird die Versionskontrolle gewährleistet und Fehler können frühzeitig erkannt und behoben werden.
     Notfalls kann auf ältere Versionen zurückgegriffen werden, um Fehler zu beheben.
     Bei der tatsächlichen Entwicklung wird auf JetBrains WebStorm\footnote{\bscite{webstorm}} als IDE gesetzt, da diese eine Vielzahl an Funktionen bietet und so produktives Arbeiten ermöglicht.
 
@@ -49,21 +49,21 @@
     Das Design der Webseite wurde so gewählt, dass es modern und ansprechend wirkt, aber gleichzeitig nicht zu überladen ist.
     Die Farbgebung ist dezent und aufeinander abgestimmt, um eine angenehme Benutzererfahrung zu gewährleisten.
     So wurde generell auf grelle Farben und zu viele Animationen verzichtet, um die Ablenkung des Benutzers zu minimieren.
-    Die Farbkomposition besteht als dunklen Grautönen für den Hintergrund und nicht wichtige Elemente, während wichtige Elemente in einem hellen Gelb ({\color{cyellow}\texttt{\#F7DE1F}}) hervorgehoben werden.
+    Die Farbkomposition besteht aus dunklen Grautönen für den Hintergrund und nicht wichtigen Elementen, während wichtige Elemente in einem hellen Gelb ({\color{cyellow}\texttt{\#F7DE1F}}) hervorgehoben werden.
     Es kommen allerdings selten auch andere Farben zum Einsatz, beispielsweise bei destruktiven Aktionen, die in einem kräftigen Rot ({\color{cred}\texttt{\#E03131}}) dargestellt werden.
 
     \subsection{Backend}
-    Das Backend von CodeUp basiert auf dem Node.js-Framework und dem dazu gehörigen \dq http\dq-Modul, welches die Erstellung eines HTTP-Servers ermöglicht.
+    Das Backend von CodeUp basiert auf dem Node.js-Framework und dem dazugehörigen \dq http\dq-Modul, welches die Erstellung eines HTTP-Servers ermöglicht.
     Neben dem HTTP-Server wird auch ein WebSocket-Server verwendet, um eine bidirektionale Kommunikation zwischen Client und Server zu ermöglichen.
     Für die WebSocket-Kommunikation wird die Bibliothek \dq socket.io\dq \footnote{\bscite{socketio}}\ verwendet.
     Die Datenspeicherung und spätere Verarbeitung erfolgt über eine MongoDB-Datenbank.
     MongoDB wurde initial in Betracht gezogen, da es eine Nicht-Relationale Datenbank ist und somit eine hohe Flexibilität bietet, die für CodeUp zwingend erforderlich ist.
-    In dieser MongoDB-Datenbank werden sowohl die Benutzerdaten, als auch sämtliche andere Daten der Platform gespeichert.
-    Lediglich Dateien, die Benutzer hochladen oder durch das Anlegen von Projekte indirekt erstellen, werden separat im S3-kompatiblen Object-Storage MinIO gespeichert.
+    In dieser MongoDB-Datenbank werden sowohl die Benutzerdaten als auch sämtliche andere Daten der Platform gespeichert.
+    Lediglich Dateien, die Benutzer hochladen oder durch das Anlegen von Projekten indirekt erstellen, werden separat im S3-kompatiblen Object-Storage MinIO gespeichert.
     MinIO ist eine Open-Source-Alternative zu Amazon S3 und ermöglicht die effiziente Speicherung von Dateien.
 
     \subsection{Kommunikation zwischen Frontend und Backend}\label{subsec:web_srv_communication}
-    Die Kommunikation zwischen dem Frontend und dem Backend der Webseite erfolgt größtenteils über eine REST-API, also eine HTTP-Kommunikation zwischen dem Client und dem Server.
+    Die Kommunikation zwischen Frontend und Backend der Webseite erfolgt größtenteils über eine REST-API, also eine HTTP-Kommunikation zwischen dem Client und dem Server.
     Damit diese REST-API möglichst einfach in den Frontend-Code integriert werden kann, wurde eine separate Bibliothek entwickelt, die die Kommunikation abstrahiert und vereinfacht.
     Diese Bibliothek wird in allen Komponenten der Webseite verwendet und umfasst alle möglichen Funktionen und Endpunkte, die der Server bereitstellt.
     Benutzer können die CodeUp-REST-API auch in eigenen Projekten verwenden, weshalb die Bibliothek auch als eigenständiges Paket veröffentlicht wurde.
@@ -92,7 +92,7 @@ interface IResponse {
     \subsubsection{Anmelden}
     Bei der initialen Registrierung auf CodeUp hat der Benutzer die Möglichkeit, sich mit seiner E-Mail-Adresse und einem Passwort zu registrieren.
     Allerdings gibt es auch die Möglichkeit, sich mit GitHub, GitLab oder Discord anzumelden, sodass der Benutzer nicht extra ein Passwort erstellen muss.
-    Nach der Registrierung wird eine Bestätigungs E-Mail an die angegebene E-Mail-Adresse gesendet, um die Echtheit der Adresse zu überprüfen.
+    Nach der Registrierung wird eine E-Mail zur Bestätigung an die angegebene E-Mail-Adresse gesendet, um die Echtheit der Adresse zu überprüfen.
     Erst nach der Bestätigung kann der Benutzer sich anmelden und die Plattform nutzen.
     \subsubsection{Dashboard}
     Das Dashboard ist die zentrale Anlaufstelle für alle Benutzer und bietet eine Übersicht über alle wichtigen Informationen.
@@ -107,7 +107,7 @@ interface IResponse {
     Eine Änderung des Benutzernamens ist nicht möglich, da dieser teilweise als eindeutiger Identifikator verwendet wird.
     Neben den persönlichen Daten kann der Benutzer auch die Zwei-Faktor-Authentifizierung aktivieren, um sein Konto zusätzlich zu schützen.
     Hierbei wird ein QR-Code angezeigt, den der Benutzer mit einer Authenticator-App scannen kann, um den Zwei-Faktor-Authentifizierungs-Code zu erhalten.
-    Sollte die Zwei-Faktor-Authentifizierung aktiviert sein, wird der Benutzer bei jedem Anmeldvorgang nach dem Code gefragt.
+    Sollte die Zwei-Faktor-Authentifizierung aktiviert sein, wird der Benutzer bei jedem Anmeldevorgang nach dem Code gefragt.
     Zum Deaktivieren der Zwei-Faktor-Authentifizierung muss der Benutzer ebenfalls den Code aus seiner Authenticator-App eingeben.
     Auch das Löschen des Kontos ist möglich, allerdings gibt es hier mehrere Kontrollmechanismen, um sicherzustellen, dass der Benutzer das Konto und alle damit verbundenen Daten wirklich löschen möchte.
     \subsubsection{Spracheinstellungen}
@@ -116,7 +116,7 @@ interface IResponse {
     Durch Klicken auf die Schaltfläche öffnet sich ein Dropdown-Menü, in dem der Benutzer die gewünschte Sprache auswählen kann.
     Aktuell werden Deutsch und Englisch manuell übersetzt, wobei Deutsch als Standardsprache festgelegt ist.
     Automatische Übersetzungen gibt es für Französisch, Spanisch, Italienisch, Niederländisch, Polnisch und Portugiesisch.
-    Diese Automatische Überstzungen basieren auf der LibreTranslate-API\footnote{\bscite{libretranslate}}, die eine einfache und zuverlässige Übersetzung ermöglicht.
+    Diese automatischen Übersetzungen basieren auf der LibreTranslate-API\footnote{\bscite{libretranslate}}, die eine einfache und zuverlässige Übersetzung ermöglicht.
     Sprachen, die automatisch übersetzt werden, bieten keine perfekte Übersetzung, sind aber in den meisten Fällen verständlich und ermöglichen es dem Benutzer, die Webseite in seiner Muttersprache zu nutzen.
     Aktuell ist es nicht möglich, Videos in einer anderen Sprache anzusehen, da die Übersetzung von Videos zu teuer und aufwendig ist.
     \subsubsection{Level-System}
@@ -136,7 +136,7 @@ interface IResponse {
     Des Weiteren bietet das Admin-Panel eine Übersicht über Statistiken, wie die Anzahl der Benutzer, die Anzahl der Kurse und die Anzahl der Projekte.
     Neben den globalen Analysen gibt es auch die Möglichkeit detaillierte Analysen für einzelne Benutzer durchzuführen.
     Diese Analyse beinhaltet Informationen über die Aktivitäten des Benutzers, wie die Anzahl der Aufrufe und welche Seiten aufgerufen wurden.
-    Zu Verbesserungszwecken und um Fehler schneller zu identifizieren, wurde ein Session-Recording-Werkzeug namens rrweb\footnote{\bscite{rrweb}} integriert.
+    Zu Verbesserungszwecken und um Fehler schneller zu identifizieren wurde ein Session-Recording-Werkzeug namens rrweb\footnote{\bscite{rrweb}} integriert.
     Hierdurch können Administratoren die Aktionen jedes einzelnen Aufrufs nachvollziehen und so Fehler schneller identifizieren.
     rrweb ist so gestaltet, dass keine sensiblen Daten aufgezeichnet werden und die Privatsphäre der Benutzer gewahrt bleibt.
     Durch das Admin-Panel können viele verschiedene Facetten der Plattform verwaltet werden, hierzu zählen:
@@ -162,7 +162,7 @@ interface IResponse {
         \item Replay: Zentrale Anlaufstelle für das Session-Recording-Tool rrweb.
         \item Shorts: Verwaltung von gekürzten URLs, die auf andere Webseiten verweisen.
         Diese sind nur für Administratoren sichtbar und können nicht von Benutzern erstellt werden.
-        \item ToDo: Hier können Administratoren ToDo-Listen von Benutzern verwalten.
+        \item To-do: Hier können Administratoren To-do-Listen von Benutzern verwalten.
         \item Zertifikate: Verwaltung der Zertifikate, die Benutzer erhalten, wenn sie einen Kurs erfolgreich abgeschlossen haben.
     \end{itemize}
     Das Admin-Panel ist nicht zu jeder Zeit auf den Funktionsumfang der Plattform angepasst, sondern wird regelmäßig aktualisiert und erweitert.
@@ -176,7 +176,7 @@ interface IResponse {
     \end{figure}
     \subsubsection{Organisationen}
     Organisationen sind eine Möglichkeit für Bildungseinrichtungen, Unternehmen oder andere Gruppen, ihre Mitglieder zu organisieren und ihnen spezielle Funktionen zur Verfügung zu stellen.
-    Jede Organisation hat einen Gründer der automatisch Administrator ist und weitere Mitglieder hinzufügen kann.
+    Jede Organisation hat einen Gründer, der automatisch Administrator ist und weitere Mitglieder hinzufügen kann.
     Organisationen haben die Möglichkeit, eigene Kurse zu erstellen und diese allen Mitgliedern zur Verfügung zu stellen.
     Ebenfalls können Mitteilungen an alle Mitglieder verschickt werden, um wichtige Informationen zu verbreiten.
     \subsubsection{Creator Studio}
@@ -192,16 +192,16 @@ interface IResponse {
     \end{itemize}
     Ein Creator kann für jeden seiner Kurse ein individuelles Vorschaubild festlegen und eine Beschreibung hinzufügen, um den Kurs attraktiver zu gestalten.
     Ebenfalls kann der Creator die Reihenfolge der Lektionen festlegen und so den Lernprozess steuern.
-    Die Änderung und Erstellung von Lektionen erfolgt über ein Drag-And-Drop Menü, dass das neue Anordnen der Lektionen ermöglicht.
+    Die Änderung und Erstellung von Lektionen erfolgt über ein Drag-And-Drop Menü, das das neue Anordnen der Lektionen ermöglicht.
     Auch das Erstellen eines Zertifikats wird über das Create Studio abgewickelt, wobei der Creator die Fragen und Antworten festlegen kann.
     Die Fragen können entweder Multiple-Choice, Code-Vervollständigung, Code-Vergleich oder Code-Überprüfung sein.
     Ebenfalls kann der Creator festlegen, wie viele Fragen richtig beantwortet werden müssen, um das Zertifikat zu erhalten.
     Das funktioniert ebenfalls über eine Drag-And-Drop Oberfläche, die auch noch spätere Änderungen an der Reihenfolge zulässt.
     Wenn der Creator einen Kurs erstellt, muss er angeben, ob dieser ein Video- oder ein interaktiver Kurs ist.
     Bei interaktiven Kursen kann der Creator die Übungen festlegen, die der Benutzer lösen muss, um die Lektion abzuschließen.
-    Bei Video-Kursen kann der Creator die Videos hochladen und eine Beschreibung hinzufügen.
+    Bei Videokursen kann der Creator die Videos hochladen und eine Beschreibung hinzufügen.
     Wenn eine Video-Lektion eingefügt wird, muss ein Quiz hinzugefügt werden, das aus mindestens einer Frage besteht.
-    Es ist ebenfalls möglich die Lektionstypen zu mischen, sodass ein Kurs sowohl aus Video- als auch aus interaktiven Lektionen bestehen kann.
+    Es ist ebenfalls möglich, die Lektionstypen zu mischen, sodass ein Kurs sowohl aus Video- als auch aus interaktiven Lektionen bestehen kann.
     Allerdings muss der Kurs eine bevorzugte Art haben, die bei der Erstellung festgelegt wird und nicht mehr geändert werden kann.
     In Abbildung~\ref{fig:creator-studio} sind die Hauptfunktionen des Creator Studios dargestellt.
     \begin{figure}[h] % options: h, t, b, p
@@ -215,7 +215,7 @@ interface IResponse {
     Er kann Fragen beantworten, Tipps geben und den Benutzer bei der Lösung von Problemen unterstützen.
     Der KI-Assistent ist in der Lage, den Code des Benutzers zu analysieren und ihm Vorschläge zu machen, wie er diesen verbessern kann.
     Das ganze System basiert auf dem OpenAI-Modell GPT-4o-mini\footnote{\bscite{gpt4o-mini}}, das speziell für die Verwendung in Chatbots und anderen KI-Systemen entwickelt wurde.
-    Aufgebaut ist der KI-Assistent in einer Chat-Oberfläche, die es dem Benutzer ermöglicht, direkt mit ihm zu interagieren und auf ältere Konversationen zuzugreifen zu können.
+    Aufgebaut ist der KI-Assistent in einer Chat-Oberfläche, die es dem Benutzer ermöglicht, direkt mit ihm zu interagieren und auf ältere Konversationen zugreifen zu können.
     \subsection{Lernen}
     \subsubsection{Kurse}
     CodeUp bietet eine Vielzahl an Kursen an, von denen jeder einzelne ein spezifisches Thema, wie beispielsweise eine Programmiersprache oder ein Konzept, abdeckt.
@@ -225,10 +225,10 @@ interface IResponse {
         \item \textbf{Interaktive Kurse}: Diese Kurse sind Text-basiert und bieten interaktive Übungen an, die den Benutzer dazu auffordern, selber Code zu schreiben.
         Hierbei beginnt jede Lektion mit einem kurzen Text, der das Thema einführt, gefolgt von einer oder mehreren Übungen, die den Benutzer dazu auffordern, Code zu schreiben.
         Jede Übung ist von einem Beispiel begleitet, das dem Benutzer zeigt, wie die Lösung aussehen könnte.
-        \item \textbf{Video Kurse}: Diese Kurse bestehen aus einer Reihe von Videos.
+        \item \textbf{Videokurse}: Diese Kurse bestehen aus einer Reihe von Videos.
         Hierbei gibt es nach jedem Video ein Quiz, das den Benutzer dazu ermutigt, sein Wissen zu testen und ggf. die Lektion zu wiederholen.
     \end{itemize}
-    Die Video-Lektionen sind in der Regel kurze Videos (ca.~5-10 Minuten) und behandelt ein spezifisches Thema.
+    Die Video-Lektionen sind in der Regel kurze Videos (ca.~5-10 Minuten) und behandeln ein spezifisches Thema.
     Interaktive Lektionen bestehen meist aus 5--10 Übungen und enthalten aktuell kein Quiz, da das Wissen durch das Schreiben von Code getestet wird.
     Videos werden auf der Video-Plattform YouTube gehostet und in die Webseite eingebettet, während interaktive Kurse direkt auf der Webseite gehostet werden.
     Durch die Auslagerung auf YouTube können die Kosten für die Infrastruktur reduziert werden, da YouTube die Videos kostenlos bereitstellt.
@@ -240,7 +240,7 @@ interface IResponse {
     Der Benutzer kann seine Lösung so oft ändern, wie er möchte, bis er mit dem Ergebnis zufrieden ist.
     Auch das erneute Übermitteln der Lösung ist möglich, um das Ergebnis zu aktualisieren.
     Technisch gesehen wird der eingegebene Code in einem isolierten Docker-Container ausgeführt, um die Sicherheit der Plattform zu gewährleisten.
-    In Zukunft ist geplant, Challenges auch in anderen Programmiersrpache anzubieten und die Ausfürhung des Codes auf eine externe Plattform auszulagern, um die Sicherheit weiter zu erhöhen.
+    In Zukunft ist geplant, Challenges auch in anderen Programmiersprachen anzubieten und die Ausführung des Codes auf eine externe Plattform auszulagern, um die Sicherheit weiter zu erhöhen.
     \subsubsection{Zertifikate}
     Benutzer haben die Möglichkeit für absolvierte Kurse ein Zertifikat zu erlangen, um anderen ihre Fähigkeiten zu zeigen.
     Diese Zertifikate werden nicht automatisch vergeben, sondern müssen durch einen Test erworben werden.
@@ -249,7 +249,7 @@ interface IResponse {
     \begin{itemize}
         \item \textbf{Multiple-Choice}: Der Benutzer muss eine von mehreren vorgegebenen Antworten auswählen.
         \item \textbf{Code vervollständigen}: Der Benutzer muss fehlende Teile eines Code-Snippets ergänzen.
-        \item \textbf{Code Vergleich}: Der Benutzer bekommt eine Ausgabe und muss aus zwei Codes denjenigen auswählen, der diese Ausgabe erzeugt.
+        \item \textbf{Code Vergleich}: Der Benutzer bekommt eine Ausgabe und muss aus zwei Codes denjenigen auswählen, der diese Ausgabe erzeugen.
         \item \textbf{Code Überprüfung}: Der Benutzer muss angeben, ob der Code Fehler enthält oder nicht.
     \end{itemize}
     Jedes Zertifikat hat einen individuellen Schwellenwert, der erreicht werden muss, um das Zertifikat zu erhalten.
@@ -257,31 +257,31 @@ interface IResponse {
     \subsection{Austauschen}
     \subsubsection{Forum}
     Durch das Forum können sich Benutzer untereinander austauschen und Fragen stellen.
-    Hierbei gibt es die Möglichkeit Text-Beiträge zu erstellen, die von anderen Benutzern kommentiert und mit einem Herz markiert werden können.
+    Hierbei gibt es die Möglichkeit, Text-Beiträge zu erstellen, die von anderen Benutzern kommentiert und mit einem Herz markiert werden können.
     Allerdings ist es ebenfalls möglich, Beiträge zu erstellen, die Bilder oder andere Medien, wie Dateien enthalten.
     Um dies zu ermöglichen, wird nach der Erstellung eines Beitrags im Hintergrund dieser analysiert und ggf. ein sogenanntes \dq Embed\dq\ erstellt.
     Diese \dq Embeds\dq\ sind spezielle Anhänge an einen Beitrag, die von der Webseite erkannt und entsprechend dargestellt werden.
-    Datei-Uploads sind grundsätzlich erlaubt, allerdings gibt es eine maximale Dateigröße von 2MB, um die Serverlast zu reduzieren, da die Dateien direkt in der Infrastruktur von CodeUp gespeichert werden.
+    Datei-Uploads sind grundsätzlich erlaubt, allerdings gibt es eine maximale Dateigröße von 2~MB, um die Serverlast zu reduzieren, da die Dateien direkt in der Infrastruktur von CodeUp gespeichert werden.
     Neben den Beiträgen kann ein Benutzer auch ein eigenes Profil erstellen.
-    Auf diesem Profil kann er eine Webseite verlinken, dies könnte zum Beispiel ein Projekt sein, dass mit CodeUp veröffentlicht wurde.
+    Auf diesem Profil kann er eine Webseite verlinken, dies könnte zum Beispiel ein Projekt sein, das mit CodeUp veröffentlicht wurde.
     Neben der Einbindung einer Webseite kann der Benutzer außerdem seinen Wohnort und seinen Geburtstag eintragen.
     Diese Informationen sind allerdings, genauso wie eine Beschreibung, optional und müssen nicht ausgefüllt werden.
-    Damit andere Benutzer besser einschätzen können, wen sie um Hilfe bitten, gibt es die Möglichkeit, erworbene Zertifikate auf dem Profil anzuzeigen.
+    Damit andere Benutzer besser einschätzen können, wenn sie um Hilfe bitten, gibt es die Möglichkeit, erworbene Zertifikate auf dem Profil anzuzeigen.
     Auch hier hat der Profilbesitzer die freie Wahl, welche Zertifikate angezeigt werden und welche nicht.
     Um eine direktere und private Kommunikation zu ermöglichen, gibt es eine Chat-Funktion, die mittels WebSockets in Echtzeit funktioniert.
     Hierdurch können Benutzer sich gegenseitig bestmöglich unterstützen und Fragen können schneller beantwortet werden.
     \subsubsection{Discovery}
-    Das Discovery-Feature ermöglicht es Benutzer, eigene Projekte zu veröffentlichen und anderen Benutzern zur Verfügung zu stellen.
+    Das Discovery-Feature ermöglicht es Benutzern, eigene Projekte zu veröffentlichen und anderen Benutzern zur Verfügung zu stellen.
     Auch das Suchen und Entdecken von Projekten anderer Benutzer ist möglich, um sich inspirieren zu lassen oder von anderen zu lernen.
     Man kann Projekte mit einer Sternen-Bewertung von eins bis fünf versehen, um anderen eine Einschätzung über die Qualität des Projekts zu geben.
     Ebenfalls gibt es die Möglichkeit, Projekte zu kommentieren und Fragen zu stellen, um mehr über das Projekt zu erfahren.
     \subsection{Planen}
     \subsubsection{Aufgaben-Planung}
-    Die Aufgaben-Planung soll Benutzern die möglichkeit geben, ihre Projekte zu planen und zu strukturieren.
-    Hierbei wird auf eine einfache ToDo-Liste gesetzt, die es dem Benutzer ermöglicht, Aufgaben zu erstellen und zu verwalten.
+    Die Aufgaben-Planung soll Benutzern die Möglichkeit geben, ihre Projekte zu planen und zu strukturieren.
+    Hierbei wird auf eine einfache To-do-Liste gesetzt, die es dem Benutzer ermöglicht, Aufgaben zu erstellen und zu verwalten.
     Jede Aufgabe besteht aus einem Titel, einer Beschreibung und einem Status, der angibt, ob die Aufgabe abgeschlossen ist oder nicht.
     Der Benutzer kann Aufgaben erstellen, bearbeiten und löschen, um seinen Arbeitsablauf zu organisieren.
-    Diese ToDo-Listen sollen dem Benutzer helfen, den Überblick über seine Projekte zu behalten, indem er große Aufgaben in kleinere Teilaufgaben unterteilt.
+    Diese To-do-Listen sollen dem Benutzer helfen, den Überblick über seine Projekte zu behalten, indem er große Aufgaben in kleinere Teilaufgaben unterteilt.
     \subsubsection{Flußdiagramme}
     Flussdiagramme sind ein wichtiges Werkzeug, um den Ablauf von Programmen zu visualisieren und zu planen.
     In CodeUp können sie dazu genutzt werden den Ablauf von konkreten Funktionen, wie einer Schaltfläche oder einer Animation, zu planen.
@@ -300,43 +300,43 @@ interface IResponse {
     Der Benutzer ist selbst für die Organisation der Dateien verantwortlich, da der Editor keine spezielle Struktur vorgibt.
     Dies beinhaltet auch das Verbinden von Dateien, um beispielsweise eine CSS-Datei in eine HTML-Datei einzubinden.
     \subsubsection{Editor (v2)}
-    Der Editor (v2) ist ein fortgeschrittener Code-Editor, der es dem Benutzer ermöglicht Back- und Frontend-Webentwicklung zu betreiben.
+    Der Editor (v2) ist ein fortgeschrittener Code-Editor, der es dem Benutzer ermöglicht, Back- und Frontend-Webentwicklung zu betreiben.
     Hierbei ist der Editor ebenfalls in Projekte organisiert, die allerdings nicht im klassischen Sinne aus mehreren Dateien bestehen.
     Viel mehr besteht ein Projekt aus mehreren Seiten, die jeweils HTML oder InCode als Grundgerüst haben und optional durch Resourcen, wie CSS- oder JavaScript-Dateien, erweitert werden können.
     Des Weiteren gibt es neben den Seiten auch sogenannte Serverless-Funktionen, die es dem Benutzer ermöglichen, einfache Server-Logik zu schreiben.
     Diese Funktionen werden auf einem Server als isolierte Docker-Container ausgeführt und können von den Seiten aufgerufen werden.
-    Durch die isoliering in einem Docker-Container kann es zu größeren Wartezeiten kommen, da der Container erst gestartet werden muss.
-    Jede Funktion hat eine maximale Laufzeit von 10 Sekunden, um die Serverlast zu reduzieren und Funktionen vorzubeugen, die beispielweise als Cryptominer missbraucht werden könnten.
+    Durch die Isolierung in einem Docker-Container kann es zu größeren Wartezeiten kommen, da der Container erst gestartet werden muss.
+    Jede Funktion hat eine maximale Laufzeit von 10 Sekunden, um die Serverlast zu reduzieren und Funktionen vorzubeugen, die beispielweise als Crypto-miner missbraucht werden könnten.
     Der Editor (v2) bietet ebenfalls Syntax-Hervorhebung, Autovervollständigung und eine Vorschau-Funktion, um dem Benutzer ein möglichst angenehmes Arbeiten zu ermöglichen.
-    Um eine schnellere Entwicklung zu ermöglich ist der Editor komplett auf WebSockets aufgebaut, sodass der Benutzer Änderungen in Echtzeit sehen kann.
-    Durch die Verwendung von WebSockets wird eine kolaborative Entwicklung ermöglicht, da mehrere Benutzer gleichzeitig an einem Projekt arbeiten können und die Änderungen andere direkt sehen können.
+    Um eine schnellere Entwicklung zu ermöglichen, ist der Editor komplett auf WebSockets aufgebaut, sodass der Benutzer Änderungen in Echtzeit sehen kann.
+    Durch die Verwendung von WebSockets wird eine kollaborative Entwicklung ermöglicht, da mehrere Benutzer gleichzeitig an einem Projekt arbeiten können und die Änderungen andere direkt sehen können.
     Dabei können maximal 10 Benutzer gleichzeitig an einem Projekt arbeiten, da es ansonsten zu Performance-Problemen kommen könnte.
     Der Ersteller des Projektes kann über den Mitwirkenden-Dialog Benutzer hinzufügen oder entfernen und deren Rechte festlegen.
     Auch ein Export des Projektes ist möglich, um es lokal zu speichern.
     Für das Hosting auf einem anderen Server außerhalb der CodeUp Umgebung ist ein Export zwar möglich, erfordert aber eine Anpassung des Codes, da das Format der Dateien speziell auf CodeUp zugeschnitten ist und keine allgemein gültige Struktur bietet.
-    Durch die Integration der statischen Dateien können Bentuzer beliebige Dateien, wie Bilder oder Videos, hochladen und in ihr Projekt einbinden.
+    Durch die Integration der statischen Dateien können Benutzer beliebige Dateien, wie Bilder oder Videos, hochladen und in ihr Projekt einbinden.
     Diese Dateien können über eine URL aufgerufen werden, die auf den CodeUp-Server verweist.
-    Durch die abstraktion der Dateien bietet sich dieser Editor besonders für Anfänger an, die schnell und einfach Webseiten erstellen möchten.
+    Durch die Abstraktion der Dateien bietet sich dieser Editor besonders für Anfänger an, die schnell und einfach Webseiten erstellen möchten.
     Anfänger können sich so nämlich auf die eigentliche Programmierung konzentrieren und müssen sich nicht um die Verlinkung oder Organisation der Dateien kümmern.
     \subsubsection{Dev-Suite (v3)}
     Die Dev-Suite (v3) ist der neuste und fortschrittlichste Editor, der in CodeUp enthalten ist.
     Er bietet die meisten Funktionen und ist speziell für fortgeschrittene Benutzer gedacht, die eine umfangreiche Entwicklungsumgebung benötigen.
-    Wie die anderen Editoren, ist auch die Dev-Suite in Projekte organisiert.
+    Wie die anderen Editoren ist auch die Dev-Suite in Projekte organisiert.
     Diese bestehen aber, wie bei der IDE (v1), aus mehreren Dateien, die der Benutzer selbst organisieren muss.
-    Die Besonderheit, ist dass die Dev-Suite alle Aspekte der Entwicklung abdeckt, von der Planung über die Dokumentation, bis hin zur Entwicklung und der schlussendlichen Veröffentlichung.
-    Es werden viele verschiedene Aspekte der CodeUp Webseite in der Dev-Suite abgedeckt, wie beispielsweise Projekteigene Flussdiagramme oder ToDo-Listen (die in diesem Fall als \dq Probleme\dq\ bezeichnet werden und neben einer Beschreibung zusätzlich eine Priorität haben können).
+    Die Besonderheit ist, dass die Dev-Suite alle Aspekte der Entwicklung abdeckt, von der Planung über die Dokumentation, bis hin zur Entwicklung und der schlussendlichen Veröffentlichung.
+    Es werden viele verschiedene Aspekte der CodeUp Webseite in der Dev-Suite abgedeckt, wie beispielsweise projekteigene Flussdiagramme oder To-do-Listen (die in diesem Fall als \dq Probleme\dq\ bezeichnet werden und neben einer Beschreibung zusätzlich eine Priorität haben können).
     Die Planungsübersicht eines Projektes gibt einen Überblick über alle Flussdiagramme und Probleme, die im Projekt enthalten sind.
     Das Wiki dient der Dokumentation des Projektes und bietet die Möglichkeit mit Markdown zu arbeiten.
     Dabei sollte das Wiki in mehrere Seiten eingeteilt werden.
     Das Versionskontrollen-Fenster ermöglicht eine einfache Verwaltung der verschiedenen Versionen und eine mögliche Rückkehr zu einer älteren Version.
     Jedes Projekt erhält bei Erstellung einen eigenen Objekt-Speicher, in dem alle hochgeladenen Dateien gespeichert werden können.
     Dies ist im Vergleich zu den beiden älteren Editoren ein großer Vorteil, da Dateien so deutlich schneller geladen werden können, da sie effizienter abgerufen werden können.
-    In einem Projekt hat man außerdem die Möglichkeit UML-Diagramme zu erstellen, die die Struktur des Projektes visualisieren.
+    In einem Projekt hat man außerdem die Möglichkeit, UML-Diagramme zu erstellen, die die Struktur des Projektes visualisieren.
     Diese Diagramme können in verschiedenen Formen erstellt werden, wie beispielsweise Klassendiagramme, Sequenzdiagramme und ER-Diagramme.
     Des Weiteren kann der Benutzer neben den vorgefertigten Diagrammen auch eigene Diagramm-Typen mit der Hilfe von PlantUML\footnote{\bscite{plantuml}} erstellen.
     Neben diesen Funktionen bietet die Dev-Suite auch die Möglichkeit, das Projekt einfach in verschiedene Sprachen zu übersetzen.
     Hierfür wird eine übersichtliche Oberfläche mit optionalen automatischen Übersetzungen angeboten.
-    Jedes Projekt bekommt außerdem bei der Erstellung eine eigene MySQL-Datenbank für die Speicherung von Daten.
+    Jedes Projekt bekommt zudem bei der Erstellung eine eigene MySQL-Datenbank für die Speicherung von Daten.
     Diese Datenbank kann über die intuitive Oberfläche verwaltet werden und bietet die Möglichkeit, eigene SQL Abfragen zu erstellen.
     Die Veröffentlichung des Projektes basiert ebenfalls auf Docker-Containern, die auf dem app0 Server von CodeUp ausgeführt werden.
     Wenn der Benutzer eine neue Version veröffentlichen möchte, wird im Hintergrund ein Container-Image erstellt und ein neuer Container gestartet.
@@ -350,13 +350,13 @@ interface IResponse {
     Aufgeteilt ist die Oberfläche in zwei Bereiche, die vertikal geteilt sind und in der Größe verändert werden können.
     Der rechte Bereich zeigt den eigentlichen Code-Editor, während der linke Bereich vier Funktionen bietet: Datei-Explorer, Terminal, Code-Snippets und Vorschau.
     Der Datei-Explorer zeigt alle Dateien im Projekt an und bietet die Möglichkeit, Dateien zu erstellen, zu bearbeiten und zu löschen.
-    Der Terminal ermöglicht es dem Benutzer, Befehle auszuführen und die Ausgabe zu sehen.
+    Das Terminal ermöglicht es dem Benutzer, Befehle auszuführen und die Ausgabe zu sehen.
     Im Terminal kann der Benutzer sein Projekt starten und stoppen.
     Intern werden alle Eingaben in das Terminal an den WebContainer weitergeleitet, der die Befehle ausführt und die Ausgabe zurückgibt.
-    Das Code-Snippets-Fenster bietet direkten Zugriff auf alle Code-Snippets, die der Benutzer erstellt hat und das Vorschau-Fenster zeigt eine Vorschau des Projektes an.
-    Mit der Dev-Suite ist es möglich reine Frontend-Projekte, reine Backend-Projekte und Full-Stack-Projekte zu entwickeln.
+    Das Code-Snippets-Fenster bietet direkten Zugriff auf alle Code-Snippets, die der Benutzer erstellt hat, und das Vorschau-Fenster zeigt eine Vorschau des Projektes an.
+    Mit der Dev-Suite ist es möglich, reine Frontend-Projekte, reine Backend-Projekte und Full-Stack-Projekte zu entwickeln.
     Es gibt verschiedene Vorlagen, die dem Benutzer den Einstieg erleichtern und ihn bei der Entwicklung unterstützen.
-    In Abbildung~\ref{fig:dev-suite} sieht man den Editor-Bereich der Dev-Suite in welchem der Benutzer Code schreiben kann.
+    In Abbildung~\ref{fig:dev-suite} sieht man den Editor-Bereich der Dev-Suite, in welchem der Benutzer Code schreiben kann.
 
     \begin{figure}[h]
         \centering
@@ -378,11 +378,11 @@ interface IResponse {
     Code-Snippets (auch Code-Schnipsel genannt) kann der Benutzer selbst erstellen und verwalten.
     Diese Snippets können Code-Blöcke, Funktionen oder ganze Programme sein, die der Benutzer immer wieder verwenden möchte.
     Snippets können zusätzlich mit einer Sprache versehen werden, sodass der Benutzer leichter nach ihnen suchen kann und entsprechende Syntax-Hervorhebung bekommt.
-    In jedem Editor, bis auf den CodeUp-Kids Bereich, gitb es eine Schaltfläche, die es dem Benutzer ermöglicht, ein Snippet einzufügen.
+    In jedem Editor, bis auf den CodeUp-Kids Bereich, gibt es eine Schaltfläche, die es dem Benutzer ermöglicht, ein Snippet einzufügen.
     So soll die Wiederverwendung von Code-Blöcken erleichtert werden und der Benutzer kann schneller und effizienter arbeiten.
     \subsubsection{Projektideen}
     Projektideen sind ein zentraler Bestandteil von CodeUp.
     Diese Ideen sollen den Benutzern Inspiration geben und ihnen helfen, eigene Projekte zu entwickeln.
-    Jede Projektidee besteht aus einer Beschreibung, die das Projekt erklärt und optional einer Demo, die das Projekt in Aktion zeigt.
+    Jede Projektidee besteht aus einer Beschreibung, die das Projekt erklärt, und optional einer Demo, die das Projekt in Aktion zeigt.
     Bei vielen Ideen ist ebenfalls ein Link zu einem beispielhaften Quellcode enthalten, an dem sich der Benutzer orientieren kann.
 \end{document}

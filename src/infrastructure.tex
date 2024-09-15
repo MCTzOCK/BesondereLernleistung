@@ -18,15 +18,15 @@
         \item \textbf{prx0 (Proxy-Server)}: Der Proxy-Server ist der Einstiegspunkt für alle Anfragen an CodeUp.
         Er leitet die Anfragen an die entsprechenden Server weiter und kümmert sich ebenfalls um die Domain-Vergabe für Projekte von Benutzern.
         Ebenfalls ist der Proxy-Server für die Verschlüsselung des Datenverkehrs mittels SSL-Zertifikaten zuständig.
-        \item \textbf{bak0 (Backup-Server)}: Der Backup-Server hat die Aufgabe Backups von allen anderen Servern zu speichern und im Notfall wiederherzustellen.
+        \item \textbf{bak0 (Backup-Server)}: Der Backup-Server hat die Aufgabe, Backups von allen anderen Servern zu speichern und im Notfall wiederherzustellen.
         Für eine übersichtlichere Darstellung zeigt Abbildung~\ref{fig:codeup-infra} nur den Backup-Prozess des Hauptservers (app0), allerdings machen alle Server stündliche Backups, die auf dem Backup-Server gespeichert werden.
         \item \textbf{app0 (Application-Server)}: Der Application-Server ist der Hauptserver von CodeUp und beinhaltet die gesamte Logik der Plattform.
-        Dieser ist der Dreh und Angelpunkt der Plattform und ist der einzige Server, bis auf den Proxy-Server mit dem der Benutzer direkt interagiert.
+        Dieser ist der Dreh- und Angelpunkt der Plattform und ist der einzige Server, bis auf den Proxy-Server mit dem der Benutzer direkt interagiert.
         Für einen schnelleren Datenverkehr ist die Hauptdatenbank auf diesem Server gespeichert.
         Der app0-Server ist ebenfalls für das Hosting der Projekte von Benutzern zuständig.
-        Projekte werden auf diesem Server in einem Git-Repository gespeichert und ebenfalls regelmäßig auf den Backup-Server gesichert.
+        Projekte werden auf diesem Server in einem Git-Repository gespeichert und ebenfalls regelmäßig auf dem Backup-Server gesichert.
         \item \textbf{app1 (Application-Server)}: Der Application-Server app1 dient zum einen als Server für alle Services, die keine direkte Interaktion mit dem Benutzer benötigen und keine Daten speichern.
-        Allerdings dient er auch als Objekt-Storage für Dateien, die Benutzer hochladen und stellt die Datenbanken für Benutzer-Projekte bereit.
+        Allerdings dient er auch als Objekt-Storage für Dateien, die Benutzer hochladen, und stellt die Datenbanken für Benutzer-Projekte bereit.
     \end{itemize}
     \section{DevOps-Praktiken}
     Die Entwicklung und Bereitstellung von CodeUp wird durch DevOps-Praktiken erleichtert.
