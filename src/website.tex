@@ -123,9 +123,46 @@ interface IResponse {
     Das Level-System ist eine Art Belohnungssystem, das den Benutzer für seine Aktivitäten auf der Plattform belohnt.
     Viele Aktionen, wie das Erstellen von Projekten, das Abschließen von Zertifikaten oder das Lösen von Challenges, geben dem Benutzer Erfahrungspunkte, die ihn im Level aufsteigen lassen.
     Hierdurch wird der Benutzer dazu motiviert, sich aktiv auf der Plattform zu beteiligen und seine Fähigkeiten zu verbessern.
+    Jedes Level benötigt eine bestimmte Anzahl von Erfahrungspunkten, um erreicht zu werden.
+    Diese Anzahl steigt mit jedem Level, sodass es immer schwieriger wird, ein neues Level zu erreichen.
+    Hierzu wird eine einfache Formel verwendet, die die Anzahl der benötigten Erfahrungspunkte berechnet:
+    \begin{equation}
+        \text{Level} = \text{Erfahrungspunkte}^{\frac{1}{3}}
+    \end{equation}
     \subsubsection{Admin-Panel}
-    \subsubsection{Creator Studio}
     \subsubsection{Organisationen}
+    \subsubsection{Creator Studio}
+    Das Creator Studio ist der zentrale Anlaufpunkt für alle Benutzer, die eigene Kurse erstellen möchten.
+    Hier können Benutzer neue Kurse erstellen und bestehende Kurse bearbeiten.
+    Das Veröffentlichen der Kurse erfolgt nach der Überprüfung durch das CodeUp-Team, um die Qualität der Kurse zu gewährleisten.
+    Grundsätzlich gibt es drei Sichtbarkeitsstufen für Kurse:
+    \begin{itemize}
+        \item \textbf{Privat}: Der Kurs ist nur für den Ersteller sichtbar und kann nicht von anderen Benutzern genutzt werden.
+        \item \textbf{Öffentlich}: Der Kurs ist für alle Benutzer sichtbar und kann von jedem angesehen werden.
+        \item \textbf{Organisation}: Der Kurs ist für alle Benutzer einer bestimmten Organisation sichtbar und kann nur von diesen angesehen werden.
+        Der Kurs-Ersteller kann bestimmen, welche Organisation Zugriff auf den Kurs hat, muss dafür allerdings auch Gründer oder Administrator dieser Organisation sein.
+    \end{itemize}
+    Ein Creator kann für jeden seiner Kurse ein individuelles Vorschaubild festlegen und eine Beschreibung hinzufügen, um den Kurs attraktiver zu gestalten.
+    Ebenfalls kann der Creator die Reihenfolge der Lektionen festlegen und so den Lernprozess steuern.
+    Die Änderung und Erstellung von Lektionen erfolgt über ein Drag-And-Drop Menü, dass das neue Anordnen der Lektionen ermöglicht.
+    Auch das Erstellen eines Zertifikats wird über das Create Studio abgewickelt, wobei der Creator die Fragen und Antworten festlegen kann.
+    Die Fragen können entweder Multiple-Choice, Code-Vervollständigung, Code-Vergleich oder Code-Überprüfung sein.
+    Ebenfalls kann der Creator festlegen, wie viele Fragen richtig beantwortet werden müssen, um das Zertifikat zu erhalten.
+    Das funktioniert ebenfalls über eine Drag-And-Drop Oberfläche, die auch noch spätere Änderungen an der Reihenfolge zulässt.
+    Wenn der Creator einen Kurs erstellt, muss er angeben, ob dieser ein Video- oder ein interaktiver Kurs ist.
+    Bei interaktiven Kursen kann der Creator die Übungen festlegen, die der Benutzer lösen muss, um die Lektion abzuschließen.
+    Bei Video-Kursen kann der Creator die Videos hochladen und eine Beschreibung hinzufügen.
+    Wenn eine Video-Lektion eingefügt wird, muss ein Quiz hinzugefügt werden, das aus mindestens einer Frage besteht.
+    Es ist ebenfalls möglich die Lektionstypen zu mischen, sodass ein Kurs sowohl aus Video- als auch aus interaktiven Lektionen bestehen kann.
+    Allerdings muss der Kurs eine bevorzugte Art haben, die bei der Erstellung festgelegt wird und nicht mehr geändert werden kann.
+    In Abbildung \ref{fig:creator-studio} sind die Hauptfunktionen des Creator Studios dargestellt.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{assets/creator-studio}
+        \caption{Creator Studio}
+        \label{fig:creator-studio}
+    \end{figure}
     \subsubsection{KI-Assistent}
     Der KI-Assistent ist ein Feature, das dem Benutzer individuelle Hilfe und Unterstützung bietet.
     Er kann Fragen beantworten, Tipps geben und den Benutzer bei der Lösung von Problemen unterstützen.
@@ -173,6 +210,10 @@ interface IResponse {
     \subsection{Austauschen}
     \subsubsection{Forum}
     \subsubsection{Discovery}
+    Das Discovery-Feature ermöglicht es Benutzer, eigene Projekte zu veröffentlichen und anderen Benutzern zur Verfügung zu stellen.
+    Auch das Suchen und Entdecken von Projekten anderer Benutzer ist möglich, um sich inspirieren zu lassen oder von anderen zu lernen.
+    Man kann Projekte mit einer Sternen-Bewertung von eins bis fünf versehen, um anderen eine Einschätzung über die Qualität des Projekts zu geben.
+    Ebenfalls gibt es die Möglichkeit, Projekte zu kommentieren und Fragen zu stellen, um mehr über das Projekt zu erfahren.
     \subsection{Planen}
     \subsubsection{Aufgaben-Planung}
     \subsubsection{Flußdiagramme}
@@ -182,5 +223,14 @@ interface IResponse {
     \subsubsection{Dev-Suite (v3)}
     \subsubsection{CodeUp-Kids}
     \subsubsection{Code-Snippets}
+    Code-Snippets (auch Code-Schnipsel genannt) kann der Benutzer selbst erstellen und verwalten.
+    Diese Snippets können Code-Blöcke, Funktionen oder ganze Programme sein, die der Benutzer immer wieder verwenden möchte.
+    Snippets können zusätzlich mit einer Sprache versehen werden, sodass der Benutzer leichter nach ihnen suchen kann und entsprechende Syntax-Hervorhebung bekommt.
+    In jedem Editor, bis auf den CodeUp-Kids Bereich, gitb es eine Schaltfläche, die es dem Benutzer ermöglicht, ein Snippet einzufügen.
+    So soll die Wiederverwendung von Code-Blöcken erleichtert werden und der Benutzer kann schneller und effizienter arbeiten.
     \subsubsection{Projektideen}
+    Projektideen sind ein zentraler Bestandteil von CodeUp.
+    Diese Ideen sollen den Benutzern Inspiration geben und ihnen helfen, eigene Projekte zu entwickeln.
+    Jede Projektidee besteht aus einer Beschreibung, die das Projekt erklärt und optional einer Demo, die das Projekt in Aktion zeigt.
+    Bei vielen Ideen ist ebenfalls ein Link zu einem beispielhaften Quellcode enthalten, an dem sich der Benutzer orientieren kann.
 \end{document}
