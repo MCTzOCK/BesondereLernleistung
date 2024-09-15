@@ -1,5 +1,44 @@
 \documentclass[main.tex]{subfiles}
 
 \begin{document}
-
+    \section{Konzept}
+    Das Konzept der CodeUp-Mobile App ist es, die Funktionalitäten der Webseite auf mobilen Geräten verfügbar zu machen.
+    Zwar ist die eigentliche Webseite bereits für mobile Geräte optimiert, jedoch kann mit einer nativen App ein noch besseres Erlebnis geschaffen werden.
+    Die App soll dabei möglichst viele Funktionen der Webseite bereitstellen und somit den Nutzern ein nahtloses Erlebnis bieten.
+    \section{Technologie-Stack}
+    Die CodeUp-Mobile App wurde mit React Native\footnote{\bscite{react-native}} entwickelt.
+    Weitere Informationen zu React Native finden sich in Anhang~\ref{sec:react-native}.
+    Für die Benutzeroberfläche wurde die Bibliothek native-base\footnote{\bscite{native-base}} verwendet.
+    Um die Entwicklung zu vereinfachen, wurde die App mit Expo\footnote{\bscite{expo}} entwickelt.
+    Expo ist ein Framework, das die Entwicklung von React Native-Apps vereinfacht und beschleunigt.
+    Für die Einbindung der Webseite wurde react-native-webview\footnote{\bscite{react-native-webview}} verwendet.
+    \section{Funktionen}
+    Die CodeUp-Mobile App ist, anders als die Webseite, nicht ohne Anmeldung nutzbar.
+    Sollte ein Benutzer beim Start der App nicht angemeldet sein, wird er aufgefordert sich mit seinem CodeUp-Konto anzumelden.
+    Hierbei kann er sich auch registrieren, allerdings ist eine Zurücksetzung des Passworts nur über die Webseite möglich.
+    Nach der Anmeldung wird der Benutzer auf die Startseite der App weitergeleitet.
+    Auf dieser Startseite werden die wichtigsten Funktionen (Kurse, Ideen, Zertifikate und Challenges) und die Kurse, in die der Benutzer eingeschrieben ist, angezeigt.
+    In der oberen rechten Ecke ist ein Zahnrad-Symbol, über das der Benutzer auf die Einstellungen zugreifen kann.
+    In der App lässt sich lediglich der Vor- und Nachname ändern, alle anderen Einstellungen sind auf der Webseite zu ändern.
+    Viele der Funktionen der Webseite sind aus Gründen der Kompatilität in der App als sogenannte WebViews eingebunden, d.~h.~die CodeUp Webseite wird in die App eingebunden.
+    Dies gilt für Zertifikate, Challenges, CodeUp Kids, Code Snippets, Editor (v1, v2, v3), Forum und Aufgaben.
+    Flussdiagramme verfügen zwar über eine native Ansicht, allerdings nur für die Erstellung und Auswahl von Flussdiagrammen.
+    Für die Bearbeitung wird ebenfalls ein WebView verwendet.
+    Nativ-Implementiert sind Kurse, Ideen, das Discovery, Blog-Beiträge, Einstellungen und die Kontakt-Seite.
+    Diese Hybrid-Lösung wurde bewusste gewählt, um die App möglichst schnell und einfach entwickeln zu können.
+    Allerdings hat die Hybrid-Lösung auch für den Benutzer Vorteile, denn dieser bekommt immer die aktuellen Funktionen von CodeUp, ohne dass er ein Update der App durchführen muss.
+    Die einzigen aktuell nicht verfügbaren Funktionen sind die Verwaltung von Organisationen, die Erstellung von Kurse und das Admin-Panel.
+    \section{Plattformkompatibilität}
+    Die CodeUp-Mobile App ist aktuell nur für iOS verfügbar.
+    Dies liegt an verschärften Veröffentlichungsrichtlinien im Google Play Store, die eine Veröffentlichung der CodeUp-App erschweren.
+    Rein technisch kann die App aber auch auf Android-Geräten genutzt werden, da React Native plattformunabhängig ist.
+    Allerdings ist die App nicht für Android optimiert und kann daher auf Android-Geräten nicht die volle Leistungsfähigkeit entfalten.
+    Eine Veröffentlichung im Google Play Store ist für die Zukunft geplant.
+    \section{Fazit}
+    Die CodeUp-Mobile App ist eine sinnvolle Ergänzung zur Webseite und bietet den Nutzern ein noch besseres Erlebnis.
+    Die App ist einfach zu bedienen und bietet alle wichtigen Funktionen von CodeUp.
+    Allerdings ist die App aktuell nur für iOS verfügbar, eine Veröffentlichung im Google Play Store ist für die Zukunft geplant.
+    Damit die App gut in der Schule genutzt werden kann, müssen allerdings noch einige Funktionen implementiert werden, wie z.~B. die Verwaltung von Organisationen.
+    Auch einige Fehler mit den WebViews müssen in Zukunft noch behoben werden, da diese manchmal nicht korrekt angezeigt werden.
+    Insgesamt ist die CodeUp-Mobile App aber ein großer Erfolg und wird von den Nutzern gut angenommen.
 \end{document}
