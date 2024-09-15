@@ -1,8 +1,8 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[11pt,a4paper]{report}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{charter}
+\usepackage{tgtermes}
 \usepackage{titlesec}
 \usepackage{needspace}
 \usepackage{etoolbox}
@@ -13,7 +13,8 @@
 \usepackage{amssymb}
 \usepackage{subfiles}
 \usepackage{ngerman}
-\usepackage[left=2cm,right=3cm,top=2cm,bottom=2cm]{geometry}
+%\usepackage[left=2cm,right=3cm,top=2cm,bottom=2cm,headheight=14.5pt,footskip=30pt]{geometry}
+\usepackage[left=2cm,right=3cm,top=2cm,bottom=2cm,headheight=14.5pt,footskip=30pt,headsep=.2in]{geometry}
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage[
@@ -27,6 +28,7 @@
 ]{hyperref}
 \usepackage{xcolor}
 \usepackage[backend=biber]{biblatex}
+\usepackage{fancyhdr}
 \addbibresource{sources.bib}
 
 \definecolor{cyellow}{HTML}{F7DE1F}
@@ -49,6 +51,15 @@
 
 
 
+\fancypagestyle{cpr}
+{
+    \pagestyle{fancy}
+    \fancyfoot{}
+    \fancyfoot[L]{\textcopyright\ Ben Siebert}
+    \fancyfoot[C]{CodeUp}
+    \fancyfoot[R]{\thepage}
+}
+
 \setcounter{tocdepth}{5}
 \setcounter{secnumdepth}{5}
 \renewcommand{\baselinestretch}{1.5}\normalsize
@@ -57,37 +68,48 @@
 
 \preto{\subsubsection}{\Needspace{5\baselineskip}} % Adjust space if needed
 
+\newcommand{\bschapter}[1]{\chapter{#1}\thispagestyle{cpr}}
+
+\pagestyle{cpr}
 
 \begin{document}
-    \title{Besondere Lernleistung}
+    \title{\textbf{Besondere Lernleistung} \\ CodeUp - Einfacher Einstieg in die Programmierung}
     \author{Ben Siebert \\ Im Mühlenwinkel 14 \\ 45525 Hattingen}
     \date{
         \begin{tabularx}{14cm}{XX}
-            \textbf{Titel}: & CodeUp - Einfacher Einstieg in die Programmierung \\
-            \textbf{Betreuer}: & Herr A. Werner \\
-            \textbf{Schule}: & Städtisches Gymnasium im Schulzentrum Holthausen \\
-            \textbf{Leichtfach}: & Informatik \\
-            \textbf{Abiturjahrgang}: & 2025 \\
-            \textbf{Version}: & \today \\
+            \textbf{Betreuer}:       & Herr A. Werner                                   \\
+            \textbf{Schule}:         & Städtisches Gymnasium im Schulzentrum Holthausen \\
+            \textbf{Leichtfach}:     & Informatik                                       \\
+            \textbf{Abiturjahrgang}: & 2025                                             \\
+            \textbf{Version}:        & \today                                           \\
         \end{tabularx}
     }
     \maketitle
-    \thispagestyle{empty}
-    \tableofcontents
+    \newpage
 
+
+    \addtocontents{toc}{\protect\thispagestyle{empty}}
+    \tableofcontents
+    \thispagestyle{empty}
+    \newpage
+
+    \pagestyle{cpr}
     \setcounter{page}{1}
-    \chapter{Einleitung}
+
+    \bschapter{Einleitung}
     \subfile{introduction.tex}
-    \chapter{Webseite}
+    \bschapter{Webseite}
     \subfile{website.tex}
-    \chapter{Mobile-App}
-    \chapter{Spiel}
-    \chapter{Infrastruktur}
+    \bschapter{Mobile-App}
+    \bschapter{Spiel}
+    \bschapter{Infrastruktur}
     \subfile{infrastructure.tex}
-    \chapter{Literaturverzeichnis}
+    \bschapter{Literaturverzeichnis}
     \printbibliography[heading=none]
-    \chapter{Abbildungsverzeichnis}
+    \bschapter{Abbildungsverzeichnis}
     \listoffigures
+
+
     \chapter{Anhang}
     \subfile{attachment.tex}
 \end{document}
