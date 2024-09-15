@@ -10,6 +10,7 @@
 
 const { execSync, spawn } = require('child_process');
 const path = require('path');
+const fs = require('fs');
 
 function runTex() {
     execSync("pdflatex -output-directory ../pdf -job-name CodeUp main.tex", {
@@ -29,7 +30,11 @@ runTex();
 runBiber();
 runTex();
 
+if(fs.existsSync(path.join(__dirname, "CodeUp.pdf"))) {
+    fs.unlinkSync(path.join(__dirname, "CodeUp.pdf"));
+}
 
+fs.copyFileSync(path.join(__dirname, "pdf", "CodeUp.pdf"), path.join(__dirname, "CodeUp.pdf"));
 
 /*
 execSync("open -a Preview.app ../pdf/CodeUp.pdf", {
